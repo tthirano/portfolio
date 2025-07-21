@@ -157,7 +157,7 @@ export default function HomePage() {
           Hi, I'm Tyler Hirano
         </Heading>
         <Text fontSize="lg" color="gray.300" mt={3} textAlign="center">
-           yessah
+           description
         </Text>
         <Box mt={2}>
           <DownloadResume />
