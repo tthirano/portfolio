@@ -1,7 +1,3 @@
-<<<<<<< HEAD
 node_modules/
 .next/
-.env
-=======
-node_modules/
->>>>>>> cb4d7a9 (initial)
+.env.local
