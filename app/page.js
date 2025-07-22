@@ -19,10 +19,6 @@ export default function HomePage() {
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
     context.setTransform(dpr, 0, 0, dpr, 0, 0);
-<<<<<<< HEAD
-  };
-
-=======
 
     context.lineWidth = 2;
     context.strokeStyle = '#E8DEF8';
@@ -32,7 +28,6 @@ export default function HomePage() {
   };
 
 
->>>>>>> 2bcd9f47502fba0d55012a43257c593e9c0a36c3
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
@@ -119,10 +114,7 @@ export default function HomePage() {
       [0, 1, 0],
     ];
 
-<<<<<<< HEAD
-=======
     const minSize = Math.min(window.innerWidth, window.innerHeight);
->>>>>>> 2bcd9f47502fba0d55012a43257c593e9c0a36c3
     const scale = 70;
 
     const pro_points = points.map((point) => {
@@ -131,13 +123,8 @@ export default function HomePage() {
       rotated = dot(rot_x, rotated);
       let projected = dot(pro_matrix, rotated);
       return [
-<<<<<<< HEAD
-        projected[0][0] * scale + canvas.width / 2,    
-        projected[1][0] * scale + canvas.height * 0.2  
-=======
         projected[0][0] * scale + window.innerWidth / 2,
         projected[1][0] * scale + window.innerHeight * 0.2
->>>>>>> 2bcd9f47502fba0d55012a43257c593e9c0a36c3
       ];
     });
 
