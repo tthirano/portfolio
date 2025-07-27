@@ -1,30 +1,23 @@
 'use client';
 import { Button } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function PageButton({ page, isSelected }) {
-  const router = useRouter();
-
-  const handleClick = () => {
-    if (page === 1) {
-      router.push('/'); // Homepage
-    } else {
-      router.push(`/page${page}`);
-    }
-  };
+  const href = page === 1 ? '/' : `/page${page}`;
 
   return (
-    <Button
-      onClick={handleClick}
-      borderRadius="full"
-      size="sm"
-      w="40px"
-      h="40px"
-      bg={isSelected ? '#E8DEF8' : '#555466'}
-      color="white"
-      _hover={{ bg: '#6A5B7C' }}
-    >
-      {page}
-    </Button>
+    <Link href={href}>
+      <Button
+        borderRadius="full"
+        size="sm"
+        w="40px"
+        h="40px"
+        bg={isSelected ? '#E8DEF8' : '#555466'}
+        color="white"
+        _hover={{ bg: '#6A5B7C' }}
+      >
+        {page}
+      </Button>
+    </Link>
   );
 }

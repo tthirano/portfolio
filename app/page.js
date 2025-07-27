@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import DownloadResume from './components/download';
 import Pagination from './components/Pagination';
+import PageContent from './components/pagecontent';
 
 export default function HomePage() {
   const canvasRef = useRef(null);
@@ -160,22 +161,31 @@ export default function HomePage() {
           pointerEvents: 'none',
         }}
       />
-      <Flex direction="column" align="center" justify="center" minHeight="100vh" px={8} zIndex={1}>
+      <PageContent currentPage={1}>
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        minHeight="100vh"
+        px={8}
+        zIndex={1}
+      >
         <Heading fontSize="4xl" color="#E8DEF8" textAlign="center">
           Hi, I'm Tyler Hirano
         </Heading>
         <Text fontSize="lg" color="gray.300" mt={3} textAlign="center">
-           description
+          MIS Student & Aspiring Software Developer passionate about AI and Data Analysis
         </Text>
         <Box mt={2}>
           <DownloadResume />
         </Box>
       </Flex>
-      <Flex position="absolute" bottom="32px" width="100%" justify="center" zIndex={1}>
+    </PageContent>
+    <Flex position="absolute" bottom="32px" width="100%" justify="center" zIndex={1}>
         <Pagination currentPage={1} />
       </Flex>
     </>
   );
 }
 
-/*MIS Student & Aspiring Software Developer passionate about AI and Data Analysis.*/
+/*.*/
