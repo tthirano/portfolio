@@ -4,6 +4,7 @@ import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import DownloadResume from './components/download';
 import Pagination from './components/Pagination';
 import PageContent from './components/pagecontent';
+import styles from './page.css'
 
 export default function HomePage() {
   const canvasRef = useRef(null);
