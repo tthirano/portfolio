@@ -54,17 +54,17 @@ export default function ContactForm() {
       <form ref={form} onSubmit={sendEmail}>
         <VStack gap={4} align="stretch">
           <Box>
-            <label htmlFor="user_name" style={{ display: 'block', marginBottom: 6 }}>Your Name</label>
+            <label htmlFor="user_name" style={{ display: 'block', marginBottom: 6, color: 'white' }}>Your Name</label>
             <Input id="user_name" name="user_name" required />
           </Box>
 
           <Box>
-            <label htmlFor="user_email" style={{ display: 'block', marginBottom: 6 }}>Your Email</label>
+            <label htmlFor="user_email" style={{ display: 'block', marginBottom: 6, color: 'white' }}>Your Email</label>
             <Input id="user_email" name="user_email" type="email" required />
           </Box>
 
           <Box>
-            <label htmlFor="message" style={{ display: 'block', marginBottom: 6 }}>Your Message</label>
+            <label htmlFor="message" style={{ display: 'block', marginBottom: 6, color: 'white'}}>Your Message</label>
             <Textarea id="message" name="message" rows={6} required />
           </Box>
 

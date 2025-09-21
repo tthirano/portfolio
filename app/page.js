@@ -175,7 +175,8 @@ export default function HomePage() {
           Hi, I'm Tyler Hirano
         </Heading>
         <Text fontSize="lg" color="gray.300" mt={3} textAlign="center">
-          MIS Student & Aspiring Software Developer passionate about AI and Data Analysis
+          {/*MIS Student & Aspiring Software Developer passionate about AI and Data Analysis*/}
+          desc
         </Text>
         <Box mt={2}>
           <DownloadResume />
