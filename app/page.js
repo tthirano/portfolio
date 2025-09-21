@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { Box, Heading, Text, Flex } from '@chakra-ui/react';
 import DownloadResume from './components/download';
-import Pagination from './components/Pagination';
+import Pagination from './components/pagination';
 import PageContent from './components/pagecontent';
 import styles from './page.css'
 
