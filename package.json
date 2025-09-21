@@ -17,6 +17,7 @@
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "emailjs": "^4.0.3",
     "framer-motion": "^12.23.9",
     "next": "^15.4.2",
     "next-auth": "^4.24.11",
