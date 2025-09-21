@@ -1,6 +1,6 @@
 'use client';
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 import ContactForm from '../components/contactme';
 
