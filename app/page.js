@@ -176,7 +176,7 @@ export default function HomePage() {
         </Heading>
         <Text fontSize="lg" color="gray.300" mt={3} textAlign="center">
           {/*MIS Student & Aspiring Software Developer passionate about AI and Data Analysis*/}
-          desc
+          descc
         </Text>
         <Box mt={2}>
           <DownloadResume />
