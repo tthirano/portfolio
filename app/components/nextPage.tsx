@@ -2,7 +2,7 @@
 import { Button } from '@chakra-ui/react';
 import Link from 'next/link';
 
-export default function PageButton({ page, isSelected }) {
+export default function PageButton({ page, isSelected, children }) {
   const href = page === 1 ? '/' : `/page${page}`;
 
   return (
@@ -12,11 +12,11 @@ export default function PageButton({ page, isSelected }) {
         size="sm"
         w="40px"
         h="40px"
-        bg={isSelected ? '#E8DEF8' : '#555466'}
+        bg={isSelected ? '#c6bdd4ff' : '#555466'}
         color="white"
         _hover={{ bg: '#6A5B7C' }}
       >
-        {page}
+        {children ?? page}
       </Button>
     </Link>
   );
