@@ -4,12 +4,11 @@ import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 
 export default function Page3() {
-  // Project data (video + title + description)
   const projects = [
     {
       title: 'Data Validation',
       description:
-        'AI-powered Data Validation Web App for Pacxa, featuring hybrid matching with fuzzy logic and embeddings to ',
+        'Data Validation Web App for Pacxa, featuring AI hybrid matching with fuzzy logic and embeddings to match company/product names',
       video: {
         mp4: '/videos2/FinalDemo.h264.mp4',
         webm: '/videos2/FinalDemo.vp9.webm',
@@ -18,7 +17,7 @@ export default function Page3() {
     {
       title: 'Project 2',
       description: 'Short description of project 2.',
-      video: null, // can replace with image or another video
+      video: null,
     },
     {
       title: 'Project 3',
@@ -45,17 +44,12 @@ export default function Page3() {
   return (
     <>
       <PageContent pagenumber={3}>
-        <Flex
-          direction="column"
-          minHeight="100vh"
-          justifyContent="space-between"
-          px={8}
-          py={4}
-        >
-          <Box>
+        <Flex direction="column" minH="100vh" px={8} py={4}>
+          <Box flex="1">
+            {/* ✅ Heading restored */}
             <Heading
               as="h1"
-              mb={10}
+              mb={8}
               fontFamily="var(--font-dm-sans)"
               fontSize="4xl"
               color="#E8DEF8"
@@ -63,9 +57,9 @@ export default function Page3() {
               Projects
             </Heading>
 
-            {/* 🔽 Projects Grid */}
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-              {projects.map((proj, idx) => (
+            {/* 🔽 Only show first 3 items */}
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+              {projects.slice(0, 3).map((proj, idx) => (
                 <Box
                   key={idx}
                   bg="#1a1a1a"
@@ -82,7 +76,7 @@ export default function Page3() {
                       borderRadius="12px"
                       overflow="hidden"
                       position="relative"
-                      pt="56.25%" // 16:9 ratio
+                      pt="56.25%" // keep 16:9 aspect ratio
                     >
                       <video
                         controls
@@ -94,7 +88,7 @@ export default function Page3() {
                           left: 0,
                           width: '100%',
                           height: '100%',
-                          objectFit: 'contain', // or 'cover'
+                          objectFit: 'cover',
                         }}
                       >
                         <source src={proj.video.mp4} type="video/mp4" />
@@ -119,10 +113,10 @@ export default function Page3() {
 
                   {/* Text */}
                   <Stack spacing={2}>
-                    <Heading as="h3" fontSize="xl" color="white">
+                    <Heading as="h3" fontSize="lg" color="white" noOfLines={1}>
                       {proj.title}
                     </Heading>
-                    <Text fontSize="sm" color="gray.300">
+                    <Text fontSize="sm" color="gray.300" noOfLines={3}>
                       {proj.description}
                     </Text>
                   </Stack>
@@ -133,14 +127,8 @@ export default function Page3() {
         </Flex>
       </PageContent>
 
-      {/* 🔽 Pagination stays fixed at bottom */}
-      <Flex
-        position="absolute"
-        bottom="32px"
-        width="100%"
-        justify="center"
-        zIndex={1}
-      >
+      {/* Pagination Footer */}
+      <Flex justify="center" py={4}>
         <Pagination currentPage={3} />
       </Flex>
     </>
