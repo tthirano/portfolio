@@ -15,11 +15,11 @@ import PageContent from '../components/pagecontent';
 export default function Page2() {
   return (
     <>
+      {/* ✅ Animated main content only */}
       <PageContent currentPage={2}>
-        {/* Sticky footer structure */}
-        <Flex direction="column" minHeight="100vh">
-          {/* Main Content */}
-          <Box flex="1" px={8} py={8}>
+        <Flex direction="column" minHeight="100vh" position="relative">
+          {/* Main Content with extra bottom padding */}
+          <Box flex="1" px={8} py={8} pb="120px">
             <Heading
               as="h1"
               mb={10}
@@ -61,18 +61,22 @@ export default function Page2() {
 
               {/* Right: Profile + Skills */}
               <Box flexShrink={0} textAlign="center">
-                <NextImage
-                  src="/me.jpg"
-                  alt="Tyler Hirano"
-                  width={220}
-                  height={220}
-                  style={{
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    margin: '0 auto 1.5rem',
-                    border: '4px solid #E8DEF8',
-                  }}
-                />
+                <Box
+                  mx="auto"
+                  mb={6}
+                  border="4px solid #E8DEF8"
+                  borderRadius="full"
+                  overflow="hidden"
+                  w={{ base: '150px', md: '220px' }}
+                  h={{ base: '150px', md: '220px' }}
+                >
+                  <NextImage
+                    src="/me.jpg"
+                    alt="Tyler Hirano"
+                    width={220}
+                    height={220}
+                  />
+                </Box>
 
                 <Heading
                   as="h2"
@@ -84,36 +88,33 @@ export default function Page2() {
                   Skills
                 </Heading>
                 <SimpleGrid columns={3} spacing={3} maxW="220px" mx="auto">
-                  {[
-                    'React',
-                    'Next.js',
-                    'MongoDB',
-                    'Python',
-                    'Azure',
-                    'Figma',
-                  ].map((skill) => (
-                    <Badge
-                      key={skill}
-                      colorScheme="purple"
-                      textAlign="center"
-                      py={1}
-                      px={2}
-                      borderRadius="md"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
+                  {['React', 'Next.js', 'MongoDB', 'Python', 'Azure', 'Figma'].map(
+                    (skill) => (
+                      <Badge
+                        key={skill}
+                        bg="purple.600"
+                        color="white"
+                        px={3}
+                        py={1}
+                        borderRadius="md"
+                        fontSize="sm"
+                        fontWeight="medium"
+                      >
+                        {skill}
+                      </Badge>
+                    )
+                  )}
                 </SimpleGrid>
               </Box>
             </Flex>
           </Box>
-
-          {/* Pagination Footer */}
-          <Flex justify="center" py={4}>
-            <Pagination currentPage={2} />
-          </Flex>
         </Flex>
       </PageContent>
+
+      {/* ❌ Non-animated footer */}
+      <Flex position="absolute" bottom="32px" width="100%" justify="center">
+        <Pagination currentPage={2} />
+      </Flex>
     </>
   );
 }
