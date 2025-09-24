@@ -11,18 +11,18 @@ import {
 import NextImage from 'next/image';
 import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
+import SkillsBox from '../components/skillsbox';
 
 export default function Page2() {
   return (
     <>
-      {/* ✅ Animated main content only */}
       <PageContent currentPage={2}>
         <Flex direction="column" minHeight="100vh" position="relative">
           {/* Main Content with extra bottom padding */}
-          <Box flex="1" px={8} py={8} pb="120px">
+          <Box flex="1" px={8} py={4} pb="120px">
             <Heading
               as="h1"
-              mb={10}
+              mb={8}
               fontFamily="var(--font-dm-sans)"
               fontSize="4xl"
               color="#E8DEF8"
@@ -67,8 +67,8 @@ export default function Page2() {
                   border="4px solid #E8DEF8"
                   borderRadius="full"
                   overflow="hidden"
-                  w={{ base: '150px', md: '220px' }}
-                  h={{ base: '150px', md: '220px' }}
+                  w={{ base: "150px", md: "220px" }}
+                  h={{ base: "150px", md: "220px" }}
                 >
                   <NextImage
                     src="/me.jpg"
@@ -78,40 +78,13 @@ export default function Page2() {
                   />
                 </Box>
 
-                <Heading
-                  as="h2"
-                  fontSize="xl"
-                  color="#E8DEF8"
-                  mb={4}
-                  fontFamily="var(--font-dm-sans)"
-                >
-                  Skills
-                </Heading>
-                <SimpleGrid columns={3} spacing={3} maxW="220px" mx="auto">
-                  {['React', 'Next.js', 'MongoDB', 'Python', 'Azure', 'Figma'].map(
-                    (skill) => (
-                      <Badge
-                        key={skill}
-                        bg="purple.600"
-                        color="white"
-                        px={3}
-                        py={1}
-                        borderRadius="md"
-                        fontSize="sm"
-                        fontWeight="medium"
-                      >
-                        {skill}
-                      </Badge>
-                    )
-                  )}
-                </SimpleGrid>
+                <SkillsBox />
               </Box>
             </Flex>
           </Box>
         </Flex>
       </PageContent>
 
-      {/* ❌ Non-animated footer */}
       <Flex position="absolute" bottom="32px" width="100%" justify="center">
         <Pagination currentPage={2} />
       </Flex>
