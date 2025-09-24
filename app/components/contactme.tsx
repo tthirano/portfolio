@@ -102,7 +102,7 @@ export default function ContactForm() {
             />
           </Box>
 
-          <Button type="submit" colorScheme="purple" isLoading={loading}>
+          <Button type="submit" colorScheme="purple" loading={loading}>
             Send Message
           </Button>
         </VStack>
