@@ -26,14 +26,13 @@ export default function ContactForm() {
         form.current?.reset();
       })
       .catch((error) => {
-        console.error('EmailJS error:', error);        // <-- check console
+        console.error('EmailJS error:', error);
         setBanner({
           type: 'error',
           msg: error?.text || `Failed to send (status ${error?.status ?? 'unknown'})`,
         });
       })
       .finally(() => setLoading(false));
-
   };
 
   return (
@@ -54,21 +53,56 @@ export default function ContactForm() {
       <form ref={form} onSubmit={sendEmail}>
         <VStack gap={4} align="stretch">
           <Box>
-            <label htmlFor="user_name" style={{ display: 'block', marginBottom: 6, color: 'white' }}>Your Name</label>
-            <Input id="user_name" name="user_name" required />
+            <label
+              htmlFor="user_name"
+              style={{ display: 'block', marginBottom: 6, color: 'white' }}
+            >
+              Your Name
+            </label>
+            <Input
+              id="user_name"
+              name="user_name"
+              required
+              color="white"
+              _placeholder={{ color: 'gray.400' }}
+            />
           </Box>
 
           <Box>
-            <label htmlFor="user_email" style={{ display: 'block', marginBottom: 6, color: 'white' }}>Your Email</label>
-            <Input id="user_email" name="user_email" type="email" required />
+            <label
+              htmlFor="user_email"
+              style={{ display: 'block', marginBottom: 6, color: 'white' }}
+            >
+              Your Email
+            </label>
+            <Input
+              id="user_email"
+              name="user_email"
+              type="email"
+              required
+              color="white"
+              _placeholder={{ color: 'gray.400' }}
+            />
           </Box>
 
           <Box>
-            <label htmlFor="message" style={{ display: 'block', marginBottom: 6, color: 'white'}}>Your Message</label>
-            <Textarea id="message" name="message" rows={6} required />
+            <label
+              htmlFor="message"
+              style={{ display: 'block', marginBottom: 6, color: 'white' }}
+            >
+              Your Message
+            </label>
+            <Textarea
+              id="message"
+              name="message"
+              rows={6}
+              required
+              color="white"
+              _placeholder={{ color: 'gray.400' }}
+            />
           </Box>
 
-          <Button type="submit" colorScheme="purple" loading={loading}>
+          <Button type="submit" colorScheme="purple" isLoading={loading}>
             Send Message
           </Button>
         </VStack>

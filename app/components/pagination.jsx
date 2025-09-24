@@ -8,26 +8,26 @@ import PageButton from './nextPage';
 import { Home, User, FolderKanban, Mail } from 'lucide-react';
 
 const icons = [
-  { page: 1, icon: Home },
-  { page: 2, icon: User },
-  { page: 3, icon: FolderKanban },
-  { page: 4, icon: Mail },
+  { path: '/', icon: Home },
+  { path: '/aboutme', icon: User },
+  { path: '/projects', icon: FolderKanban },
+  { path: '/contactme', icon: Mail },
 ];
 
-export default function Pagination({ currentPage }) {
+export default function Pagination({ currentPath }) {
   const router = useRouter();
 
   useEffect(() => {
     router.prefetch('/');
-    router.prefetch('/page2');
-    router.prefetch('/page3');
-    router.prefetch('/page4');
+    router.prefetch('/aboutme');
+    router.prefetch('/projects');
+    router.prefetch('/contactme');
   }, [router]);
 
   return (
     <HStack spacing={4} mb={4} justify="center">
-      {icons.map(({ page, icon: Icon }) => (
-        <PageButton key={page} page={page} isSelected={currentPage === page}>
+      {icons.map(({ path, icon: Icon }) => (
+        <PageButton key={path} path={path} isSelected={currentPath === path}>
           <Icon size={20} />
         </PageButton>
       ))}
