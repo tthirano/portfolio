@@ -4,7 +4,7 @@ import { Button } from '@chakra-ui/react';
 const DownloadResume = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/resume2.docx'; // Make sure this matches your actual file name
+    link.href = '/Tyler_Hirano_Resume.docx'; 
     link.setAttribute('download', 'Tyler_Hirano_Resume.docx');
     document.body.appendChild(link);
     link.click();
