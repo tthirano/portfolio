@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from "react";
 
 const MotionBox = motion(Box);
 
-const skills = ["React", "Next.js", "MongoDB", "Python", "Azure", "Figma"];
+const skills = ["React", "Next.js", "MongoDB", "Python", "Azure", "C++", "JavaScript", "TypeScript"];
 
 const colors = [
   "purple.600",

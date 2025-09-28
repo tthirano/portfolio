@@ -69,15 +69,20 @@ export default function Page2() {
                   overflow="hidden"
                   w={{ base: "150px", md: "220px" }}
                   h={{ base: "150px", md: "220px" }}
+                  position="relative"
                 >
                   <NextImage
                     src="/me.jpg"
                     alt="Tyler Hirano"
-                    width={220}
-                    height={220}
+                    fill   
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "center 30%", 
+                    }}
+                    sizes="(max-width: 768px) 150px, 220px"
+                    priority
                   />
                 </Box>
-
                 <SkillsBox />
               </Box>
             </Flex>
