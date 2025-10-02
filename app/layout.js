@@ -4,7 +4,7 @@ import { Providers } from './components/providers';
 
 export const metadata = {
   title: 'Tyler Hirano',
-  description: '',
+  description: 'Portfolio',
 };
 
 export default function RootLayout({ children }) {
