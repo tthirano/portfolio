@@ -3,8 +3,8 @@ import './styles/globals.css';
 import { Providers } from './components/providers'; 
 
 export const metadata = {
-  title: 'My App',
-  description: 'Awesome stuff here',
+  title: 'Tyler Hirano',
+  description: '',
 };
 
 export default function RootLayout({ children }) {
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Providers>
-          {children} {/* ✅ children will render your <Flex> etc inside <body> */}
+          {children} 
         </Providers>
       </body>
     </html>
