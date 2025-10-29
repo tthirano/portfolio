@@ -14,11 +14,11 @@ export default function Page3() {
         webm: '/videos2/FinalDemo.vp9.webm',
       },
     },
-    { title: 'Project 2', description: 'Short description of project 2.', video: null },
-    { title: 'Project 3', description: 'Short description of project 3.', video: null },
-    { title: 'Project 4', description: 'Short description of project 4.', video: null },
-    { title: 'Project 5', description: 'Short description of project 5.', video: null },
-    { title: 'Project 6', description: 'Short description of project 6.', video: null },
+    { title: 'Coming Soon', description: '', video: null },
+    { title: 'Coming Soon', description: '', video: null },
+    { title: 'Coming Soon', description: '', video: null },
+    { title: 'Coming Soon', description: '', video: null },
+    { title: 'Coming Soon', description: '', video: null },
   ];
 
   return (
@@ -83,7 +83,7 @@ export default function Page3() {
                     justifyContent="center"
                     color="gray.400"
                   >
-                    Placeholder
+                    
                   </Box>
                 )}
 
