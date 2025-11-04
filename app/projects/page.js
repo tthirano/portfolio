@@ -8,13 +8,21 @@ export default function Page3() {
     {
       title: 'Data Validation',
       description:
-        'Data Validation Web App for Pacxa, featuring AI hybrid matching with fuzzy logic and embeddings to match company/product names',
+        'Data Validation Web App for Pacxa that automates comparison between ConnectWise, Partner Center, and C3 billing data, using hybrid AI matching (fuzzy + embeddings) to accurately match company and product names, reduce manual reconciliation work, and pricing inconsistencies.',
       video: {
         mp4: '/videos2/FinalDemo.h264.mp4',
         webm: '/videos2/FinalDemo.vp9.webm',
       },
     },
-    { title: 'Coming Soon', description: '', video: null },
+    {
+      title: 'Talent Management App',
+      description:
+        'Talent Management App for Pacxa that centralizes employee skills, certifications, roles, and department information into a single searchable platform. Built to help HR, managers, and solution architects understand technical capability coverage, staffing gaps, and team specialization across the company.',
+      video: {
+        mp4: '/videos2/TMADemoFinal.h264.mp4',
+        webm: '/videos2/TMADemoFinal.vp9.webm',
+      },
+    },
     { title: 'Coming Soon', description: '', video: null },
     { title: 'Coming Soon', description: '', video: null },
     { title: 'Coming Soon', description: '', video: null },

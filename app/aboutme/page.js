@@ -41,8 +41,7 @@ export default function Page2() {
                   <Text fontSize="lg" color="gray.200">
                     Hi, my name is <b>Tyler Hirano</b>, a Management Information
                     Systems student with a Computer Science minor at Santa Clara
-                    University. I love building software solutions that blend
-                    business insight with technical depth.
+                    University.
                   </Text>
                   <Text fontSize="lg" color="gray.200">
                     Recently, I’ve worked on projects like the{' '}
