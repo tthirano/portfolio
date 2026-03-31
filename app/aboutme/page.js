@@ -5,20 +5,18 @@ import {
   Heading,
   Text,
   Stack,
-  SimpleGrid,
-  Badge,
 } from '@chakra-ui/react';
 import NextImage from 'next/image';
 import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 import SkillsBox from '../components/skillsbox';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function Page2() {
   return (
     <>
       <PageContent currentPage={2}>
         <Flex direction="column" minHeight="100vh" position="relative">
-          {/* Main Content with extra bottom padding */}
           <Box flex="1" px={8} py={4} pb="120px">
             <Heading
               as="h1"
@@ -32,11 +30,11 @@ export default function Page2() {
 
             <Flex
               direction={{ base: 'column', md: 'row' }}
-              align="flex-start"
-              gap={12}
+              align="stretch"
+              gap={0}
             >
               {/* Left: Text Section */}
-              <Box flex="1" maxW="3xl">
+              <Box w={{ base: '100%', md: '50%' }}>
                 <Stack spacing={4}>
                   <Text fontSize="lg" color="gray.200">
                     Hi, my name is <b>Tyler Hirano</b>, a Management Information
@@ -44,45 +42,64 @@ export default function Page2() {
                     University.
                   </Text>
                   <Text fontSize="lg" color="gray.200">
-                    Recently, I’ve worked on projects like the{' '}
+                    Recently, I've worked on projects like the{' '}
                     <b>Data Validation</b> and <b>Talent Management Web Apps</b>{' '}
                     for Pacxa, where I combined AI-driven matching pipelines,
                     MongoDB, and a Next.js + Chakra UI frontend to help account
                     managers save time and improve accuracy.
                   </Text>
                   <Text fontSize="lg" color="gray.200">
-                    I’m passionate about programming, repairing computers and
-                    devices, and working with AI. Outside of tech, I enjoy
-                    football, lifting, cooking, piano, and drums.
+                    I'm passionate about programming and repairing computers and
+                    devices. Outside of tech, I enjoy football, lifting, cooking,
+                    piano, and drums.
                   </Text>
                 </Stack>
-              </Box>
-
-              {/* Right: Profile + Skills */}
-              <Box flexShrink={0} textAlign="center">
-                <Box
-                  mx="auto"
-                  mb={6}
-                  border="4px solid #E8DEF8"
-                  borderRadius="full"
-                  overflow="hidden"
-                  w={{ base: "150px", md: "220px" }}
-                  h={{ base: "150px", md: "220px" }}
-                  position="relative"
-                >
-                  <NextImage
-                    src="/me.jpg"
-                    alt="Tyler Hirano"
-                    fill   
-                    style={{
-                      objectFit: "cover",
-                      objectPosition: "center 30%", 
-                    }}
-                    sizes="(max-width: 768px) 150px, 220px"
-                    priority
-                  />
+                <Box mt={6}>
+                  <Flex gap={4} mt={6}>
+                    <Box
+                      as="a"
+                      href="https://www.linkedin.com/in/tyler-hirano-3748b1297/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      color="#E8DEF8"
+                      _hover={{ color: 'blue.400' }}
+                      fontSize="2xl"
+                    >
+                      <FaLinkedin />
+                    </Box>
+                    <Box
+                      as="a"
+                      href="https://github.com/tthirano"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      color="#E8DEF8"
+                      _hover={{ color: 'gray.400' }}
+                      fontSize="2xl"
+                    >
+                      <FaGithub />
+                    </Box>
+                  </Flex>
                 </Box>
                 <SkillsBox />
+              </Box>
+
+              {/* Right: Large Photo */}
+              <Box
+                w={{ base: '500px', md: '550px' }}
+                h={{ base: '500px', md: '550px' }}
+                position="relative"
+                borderRadius="full"
+                overflow="hidden"
+                border="4px solid #E8DEF8"
+                ml="200px"
+              >
+                <NextImage
+                  src="/me.jpg"
+                  alt="Tyler Hirano"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
+                  priority
+                />
               </Box>
             </Flex>
           </Box>
