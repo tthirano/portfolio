@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import {
   Box,
   Flex,
@@ -13,6 +14,8 @@ import SkillsBox from '../components/skillsbox';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function Page2() {
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  
   return (
     <>
       <PageContent currentPage={2}>
@@ -37,21 +40,19 @@ export default function Page2() {
               <Box w={{ base: '100%', md: '50%' }}>
                 <Stack spacing={4}>
                   <Text fontSize="lg" color="gray.200">
-                    Hi, my name is <b>Tyler Hirano</b>, a Management Information
-                    Systems student with a Computer Science minor at Santa Clara
-                    University.
+                    Hi, I'm <b>Tyler Hirano</b>, a Management Information Systems student
+                    with a Computer Science minor at Santa Clara University, expected to
+                    graduate in 2027.
                   </Text>
                   <Text fontSize="lg" color="gray.200">
-                    Recently, I've worked on projects like the{' '}
-                    <b>Data Validation</b> and <b>Talent Management Web Apps</b>{' '}
-                    for Pacxa, where I combined AI-driven matching pipelines,
-                    MongoDB, and a Next.js + Chakra UI frontend to help account
-                    managers save time and improve accuracy.
+                    I've built full-stack web apps using <b>Next.js</b>, <b>React</b>,{' '}
+                    <b>MongoDB</b>, and <b>Python</b>, including a Data Validation tool and
+                    Talent Management platform for Pacxa that used AI-driven pipelines to
+                    help account managers work faster and smarter.
                   </Text>
                   <Text fontSize="lg" color="gray.200">
-                    I'm passionate about programming and repairing computers and
-                    devices. Outside of tech, I enjoy football, lifting, cooking,
-                    piano, and drums.
+                    Outside of class and tech, you'll find me at the gym, at the beach spearfishing, in the kitchen
+                    trying new recipes, playing piano or drums, or watching football.
                   </Text>
                 </Stack>
                 <Box mt={6}>
@@ -81,6 +82,31 @@ export default function Page2() {
                   </Flex>
                 </Box>
                 <SkillsBox />
+                {/* Thumbnail Row */}
+                <Flex gap={3} mt="auto" pt={6} justify="center">
+                    {['/me2.jpg', '/me3.jpg', '/me4.jpg'].map((src, i) => (
+                      <Box
+                        key={i}
+                        w="230px"
+                        h="170px"
+                        position="relative"
+                        borderRadius="md"
+                        overflow="hidden"
+                        border="2px solid #E8DEF8"
+                        cursor="pointer"
+                        transition="transform 0.2s, opacity 0.2s"
+                        _hover={{ transform: 'scale(1.08)', opacity: 0.85 }}
+                        onClick={() => setSelectedPhoto(src)}
+                      >
+                        <NextImage
+                          src={src}
+                          alt={`Photo ${i + 1}`}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                        />
+                      </Box>
+                    ))}
+                  </Flex>
               </Box>
 
               {/* Right: Large Photo */}
@@ -105,6 +131,40 @@ export default function Page2() {
           </Box>
         </Flex>
       </PageContent>
+
+      {/* Lightbox Overlay */}
+      {selectedPhoto && (
+        <Box
+          position="fixed"
+          top={0}
+          left={0}
+          w="100vw"
+          h="100vh"
+          bg="blackAlpha.800"
+          zIndex={100}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          onClick={() => setSelectedPhoto(null)}
+          cursor="pointer"
+        >
+          <Box
+            position="relative"
+            w="500px"
+            h="500px"
+            borderRadius="lg"
+            overflow="hidden"
+            border="4px solid #E8DEF8"
+          >
+            <NextImage
+              src={selectedPhoto}
+              alt="Enlarged photo"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </Box>
+        </Box>
+      )}
 
       <Flex position="absolute" bottom="32px" width="100%" justify="center">
         <Pagination currentPage={2} />
