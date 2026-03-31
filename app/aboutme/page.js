@@ -84,7 +84,7 @@ export default function Page2() {
                 <SkillsBox />
                 {/* Thumbnail Row */}
                 <Flex gap={3} mt="auto" pt={6} justify="center">
-                    {['/me2.jpg', '/me3.jpg', '/me4.jpg'].map((src, i) => (
+                    {['/me2.jpg', '/me3.jpg', '/me4.JPG'].map((src, i) => (
                       <Box
                         key={i}
                         w="230px"
