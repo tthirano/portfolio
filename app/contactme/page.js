@@ -17,8 +17,8 @@ export default function Page3() {
           </Box>
         </Flex>
       </PageContent>
-      <Flex position="absolute" bottom="32px" width="100%" justify="center" zIndex={1}>
-        <Pagination currentPage={4} />
+      <Flex position="fixed" bottom="32px" width="100%" justify="center" zIndex={1}>
+        <Pagination currentPath="/contactme" />
       </Flex>
     </>
   );

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   Box,
   Flex,
@@ -14,13 +14,30 @@ import SkillsBox from '../components/skillsbox';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function Page2() {
+  const contentRef = useRef(null);
+
+useEffect(() => {
+  const handleResize = () => {
+    if (!contentRef.current) return;
+    const scaleX = window.innerWidth / 1280;
+    const scaleY = window.innerHeight / 800;
+    const scale = Math.min(scaleX, scaleY, 1);
+    contentRef.current.style.transform = `scale(${scale})`;
+    contentRef.current.style.transformOrigin = 'top center';
+  };
+
+  handleResize();
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   
   return (
     <>
       <PageContent currentPage={2}>
-        <Flex direction="column" minHeight="100vh" position="relative">
-          <Box flex="1" px={8} py={4} pb="120px">
+        <Flex direction="column" minHeight="100vh"> 
+          <Box ref={contentRef} flex="1" px={8} py={4} pb="80px">
             <Heading
               as="h1"
               mb={8}
@@ -87,8 +104,8 @@ export default function Page2() {
                     {['/me2.jpg', '/me3.jpg', '/me4.JPG'].map((src, i) => (
                       <Box
                         key={i}
-                        w="230px"
-                        h="170px"
+                        w={{ base: '100px', md: '150px', lg: '230px' }}
+                        h={{ base: '80px', md: '110px', lg: '170px' }}
                         position="relative"
                         borderRadius="md"
                         overflow="hidden"
@@ -111,13 +128,14 @@ export default function Page2() {
 
               {/* Right: Large Photo */}
               <Box
-                w={{ base: '500px', md: '550px' }}
-                h={{ base: '500px', md: '550px' }}
+                w={{ base: '280px', md: '400px', lg: '550px' }}
+                h={{ base: '280px', md: '400px', lg: '550px' }}
                 position="relative"
                 borderRadius="full"
                 overflow="hidden"
                 border="4px solid #E8DEF8"
-                ml="200px"
+                ml={{ base: 'auto', md: '60px', lg: '100px' }}
+                mr={{ base: 'auto', md: '0' }}
               >
                 <NextImage
                   src="/me.jpg"
@@ -165,9 +183,8 @@ export default function Page2() {
           </Box>
         </Box>
       )}
-
-      <Flex position="absolute" bottom="32px" width="100%" justify="center">
-        <Pagination currentPage={2} />
+      <Flex position="fixed" bottom="32px" width="100%" justify="center" zIndex={1}>
+        <Pagination currentPath="/aboutme" />
       </Flex>
     </>
   );

@@ -109,14 +109,13 @@ export default function Page3() {
         </Box>
       </PageContent>
 
-      {/* ✅ Always visible footer */}
       <Flex
-        position="absolute"
+        position="fixed"
         bottom="32px"
         width="100%"
         justify="center"
       >
-        <Pagination currentPage={3} />
+        <Pagination currentPath="/projects" />
       </Flex>
     </Flex>
   );

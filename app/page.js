@@ -183,8 +183,8 @@ export default function HomePage() {
         </Box>
       </Flex>
     </PageContent>
-    <Flex position="absolute" bottom="32px" width="100%" justify="center" zIndex={1}>
-        <Pagination currentPage={1} />
+    <Flex position="fixed" bottom="32px" width="100%" justify="center" zIndex={1}>
+        <Pagination currentPath="/" />
       </Flex>
     </>
   );
