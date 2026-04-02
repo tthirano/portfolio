@@ -23,7 +23,7 @@ useEffect(() => {
     const scaleY = window.innerHeight / 800;
     const scale = Math.min(scaleX, scaleY, 1);
     contentRef.current.style.transform = `scale(${scale})`;
-    contentRef.current.style.transformOrigin = 'top center';
+    contentRef.current.style.transformOrigin = 'top left';
   };
 
   handleResize();
