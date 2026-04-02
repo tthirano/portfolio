@@ -37,7 +37,7 @@ useEffect(() => {
     <>
       <PageContent currentPage={2}>
         <Flex direction="column" minHeight="100vh"> 
-          <Box ref={contentRef} flex="1" px={8} py={4} pb="80px">
+          <Box ref={contentRef} flex="1" pl={6} pr={8} py={4} pb="80px">
             <Heading
               as="h1"
               mb={8}
