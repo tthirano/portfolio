@@ -23,7 +23,7 @@ useEffect(() => {
     const scaleY = window.innerHeight / 800;
     const scale = Math.min(scaleX, scaleY, 1);
     contentRef.current.style.transform = `scale(${scale})`;
-    contentRef.current.style.transformOrigin = 'top left';
+    contentRef.current.style.transformOrigin = window.innerWidth < 768 ? 'top center' : 'top left';
   };
 
   handleResize();
@@ -62,10 +62,10 @@ useEffect(() => {
                     graduate in 2027.
                   </Text>
                   <Text fontSize="lg" color="gray.200">
-                    I've built full-stack web apps using <b>Next.js</b>, <b>React</b>,{' '}
-                    <b>MongoDB</b>, and <b>Python</b>, including a Data Validation tool and
+                    I've built full-stack web apps using Next.js, React,{' '}
+                    MongoDB, and Python, including a Data Validation tool and
                     Talent Management platform for Pacxa that used AI-driven pipelines to
-                    help account managers work faster and smarter.
+                    help account managers streamline their work
                   </Text>
                   <Text fontSize="lg" color="gray.200">
                     Outside of class and tech, you'll find me at the gym, at the beach spearfishing, in the kitchen
