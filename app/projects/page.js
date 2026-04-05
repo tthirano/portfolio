@@ -1,9 +1,27 @@
 'use client';
 import { Box, Flex, Heading, SimpleGrid, Text, Stack } from '@chakra-ui/react';
+import { useRef, useEffect } from 'react';
 import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 
 export default function Page3() {
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (!contentRef.current) return;
+      const scaleX = window.innerWidth / 1280;
+      const scaleY = window.innerHeight / 800;
+      const scale = Math.min(scaleX, scaleY, 1);
+      contentRef.current.style.transform = `scale(${scale})`;
+      contentRef.current.style.transformOrigin = window.innerWidth < 768 ? 'top center' : 'top left';
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
   const projects = [
     {
       title: 'Data Validation',
@@ -31,9 +49,8 @@ export default function Page3() {
 
   return (
     <Flex direction="column" minH="100vh" position="relative">
-      {/* ✅ Animated main content only */}
       <PageContent currentPage={3}>
-        <Box flex="1" px={8} py={4} pb="120px">
+        <Box ref={contentRef} flex="1" px={8} py={4} pb="80px">
           <Heading
             as="h1"
             mb={8}

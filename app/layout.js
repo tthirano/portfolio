@@ -5,7 +5,12 @@ import { Providers } from './components/providers';
 export const metadata = {
   title: 'Tyler Hirano',
   description: 'Portfolio',
+  icons: {
+    icon: '/favicon_TH.svg',
+  },
 };
+
+
 
 export default function RootLayout({ children }) {
   return (
