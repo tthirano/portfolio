@@ -40,7 +40,7 @@ export default function Page2() {
   return (
     <>
       <PageContent currentPage={2}>
-        <Flex direction="column" minHeight="100vh"> 
+        <Flex direction="column" maxHeight="calc(100vh - 80px)" overflowY="auto">
           <Box ref={contentRef} flex="1" pl={6} pr={8} py={4} pb="80px">
             <Heading
               as="h1"

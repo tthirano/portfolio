@@ -52,7 +52,7 @@ export default function Page3() {
   ];
 
   return (
-    <Flex direction="column" minH="100vh" position="relative">
+    <Flex direction="column" maxHeight="calc(100vh - 80px)" overflowY="auto">
       <PageContent currentPage={3}>
         <Box ref={contentRef} flex="1" px={8} py={4} pb="80px">
           <Heading
