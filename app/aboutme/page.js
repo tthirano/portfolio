@@ -75,8 +75,8 @@ export default function Page2() {
                     trying new recipes, playing piano or drums, or watching football.
                   </Text>
                 </Stack>
-                <Box mt={6}>
-                  <Flex gap={4} mt={6}>
+                <Box mt={2}>
+                  <Flex gap={4} mt={2}>
                     <Box
                       as="a"
                       href="https://www.linkedin.com/in/tyler-hirano-3748b1297/"
