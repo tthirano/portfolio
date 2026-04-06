@@ -16,20 +16,24 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 export default function Page2() {
   const contentRef = useRef(null);
 
-useEffect(() => {
-  const handleResize = () => {
-    if (!contentRef.current) return;
-    const scaleX = window.innerWidth / 1280;
-    const scaleY = window.innerHeight / 800;
-    const scale = Math.min(scaleX, scaleY, 1);
-    contentRef.current.style.transform = `scale(${scale})`;
-    contentRef.current.style.transformOrigin = window.innerWidth < 768 ? 'top center' : 'top left';
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (!contentRef.current) return;
+      if (window.innerWidth < 768) {
+        contentRef.current.style.transform = 'none';
+        return;
+      }
+      const scaleX = window.innerWidth / 1280;
+      const scaleY = window.innerHeight / 800;
+      const scale = Math.min(scaleX, scaleY, 1);
+      contentRef.current.style.transform = `scale(${scale})`;
+      contentRef.current.style.transformOrigin = 'top left';
+    };
 
-  handleResize();
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   
@@ -53,7 +57,6 @@ useEffect(() => {
               align="stretch"
               gap={0}
             >
-              {/* Left: Text Section */}
               <Box w={{ base: '100%', md: '50%' }}>
                 <Stack spacing={4}>
                   <Text fontSize="lg" color="gray.200">
@@ -126,7 +129,6 @@ useEffect(() => {
                   </Flex>
               </Box>
 
-              {/* Right: Large Photo */}
               <Box
                 w={{ base: '280px', md: '400px', lg: '550px' }}
                 h={{ base: '280px', md: '400px', lg: '550px' }}
@@ -150,7 +152,6 @@ useEffect(() => {
         </Flex>
       </PageContent>
 
-      {/* Lightbox Overlay */}
       {selectedPhoto && (
         <Box
           position="fixed"

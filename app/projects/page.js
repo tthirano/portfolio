@@ -8,19 +8,23 @@ export default function Page3() {
   const contentRef = useRef(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (!contentRef.current) return;
-      const scaleX = window.innerWidth / 1280;
-      const scaleY = window.innerHeight / 800;
-      const scale = Math.min(scaleX, scaleY, 1);
-      contentRef.current.style.transform = `scale(${scale})`;
-      contentRef.current.style.transformOrigin = window.innerWidth < 768 ? 'top center' : 'top left';
-    };
+  const handleResize = () => {
+    if (!contentRef.current) return;
+    if (window.innerWidth < 768) {
+      contentRef.current.style.transform = 'none';
+      return;
+    }
+    const scaleX = window.innerWidth / 1280;
+    const scaleY = window.innerHeight / 800;
+    const scale = Math.min(scaleX, scaleY, 1);
+    contentRef.current.style.transform = `scale(${scale})`;
+    contentRef.current.style.transformOrigin = 'top left';
+  };
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  handleResize();
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
   
   const projects = [
     {
