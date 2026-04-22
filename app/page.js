@@ -174,10 +174,6 @@ export default function HomePage() {
         <Heading fontSize="4xl" color="#E8DEF8" textAlign="center">
           Hi, I'm Tyler Hirano
         </Heading>
-        {/*<Text fontSize="lg" color="gray.300" mt={3} textAlign="center">
-          {MIS Student & Aspiring Software Developer passionate about AI and Data Analysis
-          descc
-        </Text>*/}
         <Box mt={7}>
           <DownloadResume />
         </Box>
@@ -187,7 +183,7 @@ export default function HomePage() {
         <Pagination currentPath="/" />
       </Flex>
     </>
-  );
+  );  
 }
 
 /*.*/

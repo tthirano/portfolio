@@ -4,8 +4,8 @@ import { Button } from '@chakra-ui/react';
 const DownloadResume = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Tyler_Hirano_Resume.docx'; 
-    link.setAttribute('download', 'Tyler_Hirano_Resume.docx');
+    link.href = '/TYLER HIRANO Resume.pdf'; 
+    link.setAttribute('download', 'TYLER HIRANO Resume.pdf');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

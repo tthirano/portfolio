@@ -19,11 +19,15 @@ export default function Page2() {
   useEffect(() => {
     const handleResize = () => {
       if (!contentRef.current) return;
+      if (window.innerWidth < 768) {
+        contentRef.current.style.transform = 'none';
+        return;
+      }
       const scaleX = window.innerWidth / 1280;
       const scaleY = window.innerHeight / 800;
       const scale = Math.min(scaleX, scaleY, 1);
       contentRef.current.style.transform = `scale(${scale})`;
-      contentRef.current.style.transformOrigin = window.innerWidth < 768 ? 'top center' : 'top left';
+      contentRef.current.style.transformOrigin = 'top left';
     };
 
     handleResize();
@@ -36,7 +40,7 @@ export default function Page2() {
   return (
     <>
       <PageContent currentPage={2}>
-        <Flex direction="column" minHeight="100vh"> 
+        <Flex direction="column" maxHeight="calc(100vh - 80px)" overflowY="auto">
           <Box ref={contentRef} flex="1" pl={6} pr={8} py={4} pb="80px">
             <Heading
               as="h1"
@@ -53,7 +57,6 @@ export default function Page2() {
               align="stretch"
               gap={0}
             >
-              {/* Left: Text Section */}
               <Box w={{ base: '100%', md: '50%' }}>
                 <Stack spacing={4}>
                   <Text fontSize="lg" color="gray.200">
@@ -72,8 +75,8 @@ export default function Page2() {
                     trying new recipes, playing piano or drums, or watching football.
                   </Text>
                 </Stack>
-                <Box mt={6}>
-                  <Flex gap={4} mt={6}>
+                <Box mt={2}>
+                  <Flex gap={4} mt={2} mb={4}>
                     <Box
                       as="a"
                       href="https://www.linkedin.com/in/tyler-hirano-3748b1297/"
@@ -99,8 +102,7 @@ export default function Page2() {
                   </Flex>
                 </Box>
                 <SkillsBox />
-                {/* Thumbnail Row */}
-                <Flex gap={3} mt="auto" pt={6} justify="center">
+                <Flex gap={3} mt="auto" pt={6} justify="center" mb={6}> 
                     {['/me2.jpg', '/me3.jpg', '/me4.JPG'].map((src, i) => (
                       <Box
                         key={i}
@@ -126,7 +128,6 @@ export default function Page2() {
                   </Flex>
               </Box>
 
-              {/* Right: Large Photo */}
               <Box
                 w={{ base: '280px', md: '400px', lg: '550px' }}
                 h={{ base: '280px', md: '400px', lg: '550px' }}
@@ -136,6 +137,7 @@ export default function Page2() {
                 border="4px solid #E8DEF8"
                 ml={{ base: 'auto', md: '60px', lg: '100px' }}
                 mr={{ base: 'auto', md: '0' }}
+                mt={{ base: 6, md: 0 }}
               >
                 <NextImage
                   src="/me.jpg"
@@ -150,7 +152,6 @@ export default function Page2() {
         </Flex>
       </PageContent>
 
-      {/* Lightbox Overlay */}
       {selectedPhoto && (
         <Box
           position="fixed"
