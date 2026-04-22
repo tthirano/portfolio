@@ -20,6 +20,7 @@
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@vercel/analytics": "^2.0.1",
     "emailjs": "^4.0.3",
     "framer-motion": "^12.23.16",
     "lucide-react": "^0.544.0",
