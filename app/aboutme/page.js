@@ -16,20 +16,20 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 export default function Page2() {
   const contentRef = useRef(null);
 
-useEffect(() => {
-  const handleResize = () => {
-    if (!contentRef.current) return;
-    const scaleX = window.innerWidth / 1280;
-    const scaleY = window.innerHeight / 800;
-    const scale = Math.min(scaleX, scaleY, 1);
-    contentRef.current.style.transform = `scale(${scale})`;
-    contentRef.current.style.transformOrigin = window.innerWidth < 768 ? 'top center' : 'top left';
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (!contentRef.current) return;
+      const scaleX = window.innerWidth / 1280;
+      const scaleY = window.innerHeight / 800;
+      const scale = Math.min(scaleX, scaleY, 1);
+      contentRef.current.style.transform = `scale(${scale})`;
+      contentRef.current.style.transformOrigin = window.innerWidth < 768 ? 'top center' : 'top left';
+    };
 
-  handleResize();
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   

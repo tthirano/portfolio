@@ -1,6 +1,7 @@
 // app/layout.js
 import './styles/globals.css';
 import { Providers } from './components/providers'; 
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
   title: 'Tyler Hirano',
