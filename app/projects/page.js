@@ -1,31 +1,10 @@
 'use client';
 import { Box, Flex, Heading, SimpleGrid, Text, Stack } from '@chakra-ui/react';
-import { useRef, useEffect } from 'react';
 import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
+import styles from './page.module.css';
 
 export default function Page3() {
-  const contentRef = useRef(null);
-
-  useEffect(() => {
-  const handleResize = () => {
-    if (!contentRef.current) return;
-    if (window.innerWidth < 768) {
-      contentRef.current.style.transform = 'none';
-      return;
-    }
-    const scaleX = window.innerWidth / 1280;
-    const scaleY = window.innerHeight / 800;
-    const scale = Math.min(scaleX, scaleY, 1);
-    contentRef.current.style.transform = `scale(${scale})`;
-    contentRef.current.style.transformOrigin = 'top left';
-  };
-
-  handleResize();
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
-  
   const projects = [
     {
       title: 'Data Validation',
@@ -46,98 +25,83 @@ export default function Page3() {
       },
     },
     { title: 'Coming Soon', description: '', video: null },
-    { title: 'Coming Soon', description: '', video: null },
-    { title: 'Coming Soon', description: '', video: null },
-    { title: 'Coming Soon', description: '', video: null },
   ];
 
   return (
-    <Flex direction="column" maxHeight="calc(100vh - 80px)" overflowY="auto">
-      <PageContent currentPage={3}>
-        <Box ref={contentRef} flex="1" px={8} py={4} pb="80px">
-          <Heading
-            as="h1"
-            mb={8}
-            fontFamily="var(--font-dm-sans)"
-            fontSize="4xl"
-            color="#E8DEF8"
-          >
-            Projects
-          </Heading>
+    <>
+      <div className={styles.container}>
+        <PageContent currentPage={3}>
+          <Box flex="1" pl={6} pr={8} py={4}>
+            <Heading
+              as="h1"
+              mb={8}
+              fontFamily="var(--font-dm-sans)"
+              fontSize="4xl"
+              color="#E8DEF8"
+            >
+              Projects
+            </Heading>
 
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-            {projects.slice(0, 3).map((proj, idx) => (
-              <Box
-                key={idx}
-                bg="#1a1a1a"
-                borderRadius="xl"
-                p={4}
-                shadow="md"
-                transition="transform 0.2s"
-                _hover={{ transform: 'translateY(-4px)' }}
-              >
-                {proj.video ? (
-                  <Box
-                    mb={3}
-                    borderRadius="12px"
-                    overflow="hidden"
-                    position="relative"
-                    pt="56.25%"
-                  >
-                    <video
-                      controls
-                      playsInline
-                      preload="metadata"
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                      }}
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+              {projects.map((proj, idx) => (
+                <Box
+                  key={idx}
+                  bg="#1a1a1a"
+                  borderRadius="xl"
+                  p={4}
+                  shadow="md"
+                  transition="transform 0.2s"
+                  _hover={{ transform: 'translateY(-4px)' }}
+                >
+                  {proj.video ? (
+                    <Box
+                      mb={3}
+                      borderRadius="12px"
+                      overflow="hidden"
+                      position="relative"
+                      pt="56.25%"
                     >
-                      <source src={proj.video.mp4} type="video/mp4" />
-                      <source src={proj.video.webm} type="video/webm" />
-                    </video>
-                  </Box>
-                ) : (
-                  <Box
-                    mb={3}
-                    h="180px"
-                    borderRadius="12px"
-                    bg="gray.700"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    color="gray.400"
-                  >
-                    
-                  </Box>
-                )}
+                      <video
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className={styles.video}
+                      >
+                        <source src={proj.video.mp4} type="video/mp4" />
+                        <source src={proj.video.webm} type="video/webm" />
+                      </video>
+                    </Box>
+                  ) : (
+                    <Box
+                      mb={3}
+                      h="180px"
+                      borderRadius="12px"
+                      bg="gray.700"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      color="gray.400"
+                    />
+                  )}
 
-                <Stack spacing={2}>
-                  <Heading as="h3" fontSize="lg" color="white" noOfLines={1}>
-                    {proj.title}
-                  </Heading>
-                  <Text fontSize="sm" color="gray.300" noOfLines={3}>
-                    {proj.description}
-                  </Text>
-                </Stack>
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Box>
-      </PageContent>
+                  <Stack spacing={2}>
+                    <Heading as="h3" fontSize="lg" color="white" noOfLines={1}>
+                      {proj.title}
+                    </Heading>
+                    <Text fontSize="sm" color="gray.300" noOfLines={3}>
+                      {proj.description}
+                    </Text>
+                  </Stack>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Box>
+        </PageContent>
+      </div>
 
-      <Flex
-        position="fixed"
-        bottom="32px"
-        width="100%"
-        justify="center"
-      >
+      <div className={styles.pagination}>
         <Pagination currentPath="/projects" />
-      </Flex>
-    </Flex>
+      </div>
+    </>
   );
 }

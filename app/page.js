@@ -1,10 +1,10 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { Box, Heading, Text, Flex } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import DownloadResume from './components/download';
 import Pagination from './components/pagination';
 import PageContent from './components/pagecontent';
-import styles from './page.css'
+import styles from './page.module.css';
 
 export default function HomePage() {
   const canvasRef = useRef(null);
@@ -28,7 +28,6 @@ export default function HomePage() {
     context.lineJoin = 'round';
     context.lineCap = 'round';
   };
-
 
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
@@ -150,40 +149,23 @@ export default function HomePage() {
   }, []);
   return (
     <>
-      <canvas
-        ref={canvasRef}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          zIndex: 0,
-          pointerEvents: 'none',
-        }}
-      />
-      <PageContent currentPage={1}>
-      <Flex
-        direction="column"
-        align="center"
-        justify="center"
-        minHeight="100vh"
-        px={8}
-        zIndex={1}
-      >
-        <Heading fontSize="4xl" color="#E8DEF8" textAlign="center">
-          Hi, I'm Tyler Hirano
-        </Heading>
-        <Box mt={7}>
-          <DownloadResume />
-        </Box>
-      </Flex>
-    </PageContent>
-    <Flex position="fixed" bottom="32px" width="100%" justify="center" zIndex={1}>
-        <Pagination currentPath="/" />
-      </Flex>
+      <div className={styles.container}>
+        <canvas ref={canvasRef} className={styles.canvas} />
+        <PageContent currentPage={1}>
+          <div className={styles.content}>
+            <Heading fontSize="4xl" color="#E8DEF8" textAlign="center">
+              Hi, I'm Tyler Hirano
+            </Heading>
+            <Box mt={7}>
+              <DownloadResume />
+            </Box>
+          </div>
+        </PageContent>
+        <div className={styles.pagination}>
+          <Pagination currentPath="/" />
+        </div>
+      </div>
     </>
   );  
 }
 
-/*.*/

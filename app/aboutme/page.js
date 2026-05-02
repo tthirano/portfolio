@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Flex,
@@ -10,38 +10,17 @@ import {
 import NextImage from 'next/image';
 import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
-import SkillsBox from '../components/skillsbox';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import styles from './page.module.css';
 
 export default function Page2() {
-  const contentRef = useRef(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (!contentRef.current) return;
-      if (window.innerWidth < 768) {
-        contentRef.current.style.transform = 'none';
-        return;
-      }
-      const scaleX = window.innerWidth / 1280;
-      const scaleY = window.innerHeight / 800;
-      const scale = Math.min(scaleX, scaleY, 1);
-      contentRef.current.style.transform = `scale(${scale})`;
-      contentRef.current.style.transformOrigin = 'top left';
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   
   return (
     <>
-      <PageContent currentPage={2}>
-        <Flex direction="column" maxHeight="calc(100vh - 80px)" overflowY="auto">
-          <Box ref={contentRef} flex="1" pl={6} pr={8} py={4} pb="80px">
+      <div className={styles.container}>
+        <PageContent currentPage={2}>
+          <Box flex="1" pl={6} pr={8} py={4}>
             <Heading
               as="h1"
               mb={8}
@@ -61,76 +40,74 @@ export default function Page2() {
                 <Stack spacing={4}>
                   <Text fontSize="lg" color="gray.200">
                     Hi, I'm <b>Tyler Hirano</b>, a Management Information Systems student
-                    with a Computer Science minor at Santa Clara University, expected to
-                    graduate in 2027.
+                    with a Computer Science minor at Santa Clara University. I like building
+                    tools that make systems easier to use and workflows more efficient. Always 
+                    looking to work on problems where technology can make a real difference
                   </Text>
                   <Text fontSize="lg" color="gray.200">
-                    I've built full-stack web apps using Next.js, React,{' '}
-                    MongoDB, and Python, including a Data Validation tool and
-                    Talent Management platform for Pacxa that used AI-driven pipelines to
-                    help account managers streamline their work
+                    I interned at Pacxa where I built a data validation app that cut manual
+                    reconciliation time by 50%, worked on an AI pipeline for entity resolution,
+                    and refactored a Power Apps talent management tool into a full Next.js web app.
+                    I'm also currently building a website for Front Door Communities, a local nonprofit in San Jose.
                   </Text>
                   <Text fontSize="lg" color="gray.200">
-                    Outside of class and tech, you'll find me at the gym, at the beach spearfishing, in the kitchen
+                    Outside of class and tech, you'll find me at the gym, with my epic dog, spearfishing,
                     trying new recipes, playing piano or drums, or watching football.
                   </Text>
                 </Stack>
-                <Box mt={2}>
-                  <Flex gap={4} mt={2} mb={4}>
+                <Flex gap={4} mt={4} mb={4}>
+                  <Box
+                    as="a"
+                    href="https://www.linkedin.com/in/tyler-hirano-3748b1297/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color="#E8DEF8"
+                    _hover={{ color: 'blue.400' }}
+                    fontSize="2xl"
+                  >
+                    <FaLinkedin />
+                  </Box>
+                  <Box
+                    as="a"
+                    href="https://github.com/tthirano"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color="#E8DEF8"
+                    _hover={{ color: 'gray.400' }}
+                    fontSize="2xl"
+                  >
+                    <FaGithub />
+                  </Box>
+                </Flex>
+                <Flex gap={3} pt={6} justify="center" mb={6}>
+                  {['/me2.jpg', '/me3.jpg', '/me4.JPG'].map((src, i) => (
                     <Box
-                      as="a"
-                      href="https://www.linkedin.com/in/tyler-hirano-3748b1297/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="#E8DEF8"
-                      _hover={{ color: 'blue.400' }}
-                      fontSize="2xl"
+                      key={i}
+                      w={{ base: '100px', md: '150px', lg: '230px' }}
+                      h={{ base: '80px', md: '110px', lg: '170px' }}
+                      position="relative"
+                      borderRadius="md"
+                      overflow="hidden"
+                      border="2px solid #E8DEF8"
+                      cursor="pointer"
+                      transition="transform 0.2s, opacity 0.2s"
+                      _hover={{ transform: 'scale(1.08)', opacity: 0.85 }}
+                      onClick={() => setSelectedPhoto(src)}
                     >
-                      <FaLinkedin />
+                      <NextImage
+                        src={src}
+                        alt={`Photo ${i + 1}`}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                      />
                     </Box>
-                    <Box
-                      as="a"
-                      href="https://github.com/tthirano"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      color="#E8DEF8"
-                      _hover={{ color: 'gray.400' }}
-                      fontSize="2xl"
-                    >
-                      <FaGithub />
-                    </Box>
-                  </Flex>
-                </Box>
-                <SkillsBox />
-                <Flex gap={3} mt="auto" pt={6} justify="center" mb={6}> 
-                    {['/me2.jpg', '/me3.jpg', '/me4.JPG'].map((src, i) => (
-                      <Box
-                        key={i}
-                        w={{ base: '100px', md: '150px', lg: '230px' }}
-                        h={{ base: '80px', md: '110px', lg: '170px' }}
-                        position="relative"
-                        borderRadius="md"
-                        overflow="hidden"
-                        border="2px solid #E8DEF8"
-                        cursor="pointer"
-                        transition="transform 0.2s, opacity 0.2s"
-                        _hover={{ transform: 'scale(1.08)', opacity: 0.85 }}
-                        onClick={() => setSelectedPhoto(src)}
-                      >
-                        <NextImage
-                          src={src}
-                          alt={`Photo ${i + 1}`}
-                          fill
-                          style={{ objectFit: 'cover' }}
-                        />
-                      </Box>
-                    ))}
-                  </Flex>
+                  ))}
+                </Flex>
               </Box>
 
               <Box
-                w={{ base: '280px', md: '400px', lg: '550px' }}
-                h={{ base: '280px', md: '400px', lg: '550px' }}
+                w={{ base: '200px', md: '300px', lg: '400px' }}
+                h={{ base: '200px', md: '300px', lg: '400px' }}
                 position="relative"
                 borderRadius="full"
                 overflow="hidden"
@@ -149,44 +126,25 @@ export default function Page2() {
               </Box>
             </Flex>
           </Box>
-        </Flex>
-      </PageContent>
+        </PageContent>
+      </div>
 
       {selectedPhoto && (
-        <Box
-          position="fixed"
-          top={0}
-          left={0}
-          w="100vw"
-          h="100vh"
-          bg="blackAlpha.800"
-          zIndex={100}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          onClick={() => setSelectedPhoto(null)}
-          cursor="pointer"
-        >
-          <Box
-            position="relative"
-            w="500px"
-            h="500px"
-            borderRadius="lg"
-            overflow="hidden"
-            border="4px solid #E8DEF8"
-          >
+        <div className={styles.lightbox} onClick={() => setSelectedPhoto(null)}>
+          <div className={styles.lightboxImage}>
             <NextImage
               src={selectedPhoto}
               alt="Enlarged photo"
               fill
               style={{ objectFit: 'cover' }}
             />
-          </Box>
-        </Box>
+          </div>
+        </div>
       )}
-      <Flex position="fixed" bottom="32px" width="100%" justify="center" zIndex={1}>
+
+      <div className={styles.pagination}>
         <Pagination currentPath="/aboutme" />
-      </Flex>
+      </div>
     </>
   );
 }

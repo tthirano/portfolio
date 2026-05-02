@@ -1,25 +1,27 @@
 'use client';
-import { Box, Flex, Heading } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 import ContactForm from '../components/contactme';
+import styles from './page.module.css';
 
-export default function Page3() {
+export default function Page4() {
   return (
     <>
-      <PageContent pagenumber={4}>
-        <Flex direction="column" minHeight="100vh" justifyContent="space-between" px={8} py={4}>
-          <Box>
+      <div className={styles.container}>
+        <PageContent pagenumber={4}>
+          <Box px={8} py={4}>
             <Heading as="h1" mb={6} fontFamily="var(--font-dm-sans)" fontSize="4xl" color="#E8DEF8">
               Contact Me
             </Heading>
             <ContactForm />
           </Box>
-        </Flex>
-      </PageContent>
-      <Flex position="fixed" bottom="32px" width="100%" justify="center" zIndex={1}>
+        </PageContent>
+      </div>
+
+      <div className={styles.pagination}>
         <Pagination currentPath="/contactme" />
-      </Flex>
+      </div>
     </>
   );
 }

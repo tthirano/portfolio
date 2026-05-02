@@ -1,0 +1,48 @@
+.container {
+  height: 100dvh;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+.container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #E8DEF8;
+  border-radius: 4px;
+}
+
+.canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  z-index: 1;
+}
+
+.pagination {
+  position: fixed;
+  bottom: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}

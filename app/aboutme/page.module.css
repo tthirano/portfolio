@@ -1,0 +1,49 @@
+.container {
+  height: 100dvh;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+.container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #E8DEF8;
+  border-radius: 4px;
+}
+
+.pagination {
+  position: fixed;
+  bottom: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.lightboxImage {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 4px solid #E8DEF8;
+}
