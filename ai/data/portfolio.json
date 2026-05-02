@@ -1,0 +1,17 @@
+[
+  {
+    "type": "project",
+    "title": "AI Matching Pipeline",
+    "content": "Built a hybrid company and product matching system using embeddings, fuzzy matching, and Levenshtein distance. Integrated MongoDB and Azure OpenAI..."
+  },
+  {
+    "type": "experience",
+    "title": "Internship",
+    "content": "Worked on full-stack development and automation tools, focusing on improving workflow efficiency..."
+  },
+  {
+    "type": "skills",
+    "title": "Tech Stack",
+    "content": "Experienced with Python, JavaScript, Next.js, MongoDB, Azure OpenAI..."
+  }
+]
