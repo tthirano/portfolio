@@ -10,123 +10,159 @@ export default function HomePage() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-  const canvas = canvasRef.current;
-  const context = canvas.getContext('2d');
-  if (!canvas || !context) return;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    if (!canvas || !context) return;
 
-  const resizeCanvas = () => {
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-    canvas.style.width = `${window.innerWidth}px`;
-    canvas.style.height = `${window.innerHeight}px`;
-    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    let mouseX = 0.5;
+    let mouseY = 0.5;
+    let autoAngle = 0;
+    let lastMouseMove = Date.now(); 
+    let lastAngleX = 0;
+    let lastAngleY = 0;
+    let currentAngleX = 0.5;
+    let currentAngleY = 0.5;
+
+    const handleMouseMove = (e) => {
+      mouseX = e.clientX / window.innerWidth;
+      mouseY = e.clientY / window.innerHeight;
+      
+      lastAngleX = -(mouseY - 0.5) * Math.PI;
+      lastAngleY = (mouseX - 0.5) * Math.PI * 2;
+      autoAngle = 0; 
+      
+      lastMouseMove = Date.now();
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    const resizeCanvas = () => {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      context.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      context.lineWidth = 2;
+      context.strokeStyle = '#E8DEF8';
+      context.fillStyle = '#ff918f';
+      context.lineJoin = 'round';
+      context.lineCap = 'round';
+    };
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     context.lineWidth = 2;
     context.strokeStyle = '#E8DEF8';
     context.fillStyle = '#ff918f';
     context.lineJoin = 'round';
     context.lineCap = 'round';
-  };
 
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-
-  context.lineWidth = 2;
-  context.strokeStyle = '#E8DEF8';
-  context.fillStyle = '#ff918f';
-  context.lineJoin = 'round';
-  context.lineCap = 'round';
-
-  const dot = (A, B) => {
-    const result = Array(A.length).fill(null).map(() => Array(B[0].length).fill(0));
-    for (let i = 0; i < A.length; i++) {
-      for (let j = 0; j < B[0].length; j++) {
-        for (let k = 0; k < A[0].length; k++) {
-          result[i][j] += A[i][k] * B[k][j];
+    const dot = (A, B) => {
+      const result = Array(A.length).fill(null).map(() => Array(B[0].length).fill(0));
+      for (let i = 0; i < A.length; i++) {
+        for (let j = 0; j < B[0].length; j++) {
+          for (let k = 0; k < A[0].length; k++) {
+            result[i][j] += A[i][k] * B[k][j];
+          }
         }
       }
-    }
-    return result;
-  };
+      return result;
+    };
 
-  const reshape = (point, x) => point.slice(0, x).map(v => [v]);
+    const reshape = (point, x) => point.slice(0, x).map(v => [v]);
 
-  const connect_points = (i, j, p) => {
-    context.beginPath();
-    context.moveTo(p[i][0], p[i][1]);
-    context.lineTo(p[j][0], p[j][1]);
-    context.stroke();
-  };
-
-  const fillPoints = (p) => {
-    const faces = [
-      [0, 1, 5, 4],
-      [4, 5, 6, 7],
-      [5, 1, 2, 6],
-      [1, 2, 3, 0],
-      [0, 3, 7, 4],
-      [7, 6, 2, 3],
-    ];
-
-    for (const face of faces) {
+    const connect_points = (i, j, p) => {
       context.beginPath();
-      face.forEach((idx, i) => {
-        if (i === 0) context.moveTo(p[idx][0], p[idx][1]);
-        else context.lineTo(p[idx][0], p[idx][1]);
-      });
-      context.closePath();
-      context.fill();
-    }
-  };
+      context.moveTo(p[i][0], p[i][1]);
+      context.lineTo(p[j][0], p[j][1]);
+      context.stroke();
+    };
 
-  let frameId;
-  let angle = 0;
-
-  const animate = () => {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    angle += 0.005;
-
-    const rot_x = [
-      [1, 0, 0],
-      [0, Math.cos(angle), -Math.sin(angle)],
-      [0, Math.sin(angle), Math.cos(angle)],
-    ];
-
-    const rot_y = [
-      [Math.cos(angle), 0, Math.sin(angle)],
-      [0, 1, 0],
-      [-Math.sin(angle), 0, Math.cos(angle)],
-    ];
-
-    const rot_z = [
-      [Math.cos(angle), -Math.sin(angle), 0],
-      [Math.sin(angle), Math.cos(angle), 0],
-      [0, 0, 1],
-    ];
-
-    const points = [
-      [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1],
-      [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
-    ];
-
-    const pro_matrix = [
-      [1, 0, 0],
-      [0, 1, 0],
-    ];
-
-    const minSize = Math.min(window.innerWidth, window.innerHeight);
-    const scale = 70;
-
-    const pro_points = points.map((point) => {
-      let rotated = dot(rot_z, reshape(point, 3));
-      rotated = dot(rot_y, rotated);
-      rotated = dot(rot_x, rotated);
-      let projected = dot(pro_matrix, rotated);
-      return [
-        projected[0][0] * scale + window.innerWidth / 2,
-        projected[1][0] * scale + window.innerHeight * 0.2
+    const fillPoints = (p) => {
+      const faces = [
+        [0, 1, 5, 4],
+        [4, 5, 6, 7],
+        [5, 1, 2, 6],
+        [1, 2, 3, 0],
+        [0, 3, 7, 4],
+        [7, 6, 2, 3],
       ];
+
+      for (const face of faces) {
+        context.beginPath();
+        face.forEach((idx, i) => {
+          if (i === 0) context.moveTo(p[idx][0], p[idx][1]);
+          else context.lineTo(p[idx][0], p[idx][1]);
+        });
+        context.closePath();
+        context.fill();
+      }
+    };
+
+    let frameId;
+
+    const animate = () => {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+
+      const idleMs = Date.now() - lastMouseMove;
+      const isIdle = idleMs > 500; 
+
+      if (isIdle) {
+        autoAngle += 0.005;
+      }
+
+      const targetAngleY = isIdle ? lastAngleY + autoAngle : (mouseX - 0.5) * Math.PI * 2;
+      const targetAngleX = isIdle ? lastAngleX + autoAngle : -(mouseY - 0.5) * Math.PI;
+
+      currentAngleX += (targetAngleX - currentAngleX) * 0.05;
+      currentAngleY += (targetAngleY - currentAngleY) * 0.05;
+
+      const angleX = currentAngleX;
+      const angleY = currentAngleY;
+
+      const rot_x = [
+      [1, 0, 0],
+      [0, Math.cos(angleX), -Math.sin(angleX)],
+      [0, Math.sin(angleX), Math.cos(angleX)],
+      ];
+
+      const rot_y = [
+        [Math.cos(angleY), 0, Math.sin(angleY)],
+        [0, 1, 0],
+        [-Math.sin(angleY), 0, Math.cos(angleY)],
+      ];
+
+      const rot_z = [
+        [Math.cos(angleX), -Math.sin(angleX), 0],
+        [Math.sin(angleX), Math.cos(angleX), 0],
+        [0, 0, 1],
+      ];
+
+      const points = [
+        [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1],
+        [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
+      ];
+
+      const pro_matrix = [
+        [1, 0, 0],
+        [0, 1, 0],
+      ];
+
+      const minSize = Math.min(window.innerWidth, window.innerHeight);
+      const scale = 70;
+
+      const pro_points = points.map((point) => {
+        let rotated = dot(rot_z, reshape(point, 3));
+        rotated = dot(rot_y, rotated);
+        rotated = dot(rot_x, rotated);
+        let projected = dot(pro_matrix, rotated);
+        return [
+          projected[0][0] * scale + window.innerWidth / 2,
+          projected[1][0] * scale + window.innerHeight * 0.2
+        ];
     });
 
     fillPoints(pro_points);
@@ -136,15 +172,16 @@ export default function HomePage() {
       connect_points(i, i + 4, pro_points);
     }
 
-    frameId = requestAnimationFrame(animate);
-  };
+      frameId = requestAnimationFrame(animate);
+    };
 
-  animate();
+    animate();
 
-  return () => {
-    cancelAnimationFrame(frameId);
-    window.removeEventListener('resize', resizeCanvas);
-  };
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   
   }, []);
   return (

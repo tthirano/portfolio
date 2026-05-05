@@ -1,7 +1,7 @@
-// app/layout.js
 import './styles/globals.css';
-import { Providers } from './components/providers'; 
-import { Analytics } from "@vercel/analytics/next"
+import { Providers } from './components/providers';
+import LoadingWrapper from './components/loadingwrapper';
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: 'Tyler Hirano',
@@ -15,9 +15,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Providers>
-          {children} 
-        </Providers>
+        <LoadingWrapper>
+          <Providers>
+            {children}
+          </Providers>
+        </LoadingWrapper>
+        <Analytics />
       </body>
     </html>
   );
