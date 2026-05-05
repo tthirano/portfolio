@@ -4,14 +4,14 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import PageButton from './nextPage';
 
-// Lucide icons
-import { Home, User, FolderKanban, Mail } from 'lucide-react';
+import { Home, User, FolderKanban, Mail, BotMessageSquare } from 'lucide-react';
 
 const icons = [
   { path: '/', icon: Home },
   { path: '/aboutme', icon: User },
   { path: '/projects', icon: FolderKanban },
   { path: '/contactme', icon: Mail },
+  { path: '/chat', icon: BotMessageSquare },
 ];
 
 export default function Pagination({ currentPath }) {

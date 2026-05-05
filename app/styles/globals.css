@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 :root {
-  --font-dm-sans: 'DM Sans', sans-serif;
+  font-family: 'Courier New', monospace;
 }
 
 body {
   background-color: #282A31; /* light gray */
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Courier New', monospace;
 }
 
 html, body {

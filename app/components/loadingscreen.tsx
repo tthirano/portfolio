@@ -5,7 +5,7 @@ import styles from './loadingscreen.module.css';
 const lines = [
   { text: '> initializing portfolio...', delay: 0 },
   { text: '> establishing connection...', delay: 1000 },
-  { text: '> welcome to tylerhirano.me', delay: 2000 },
+  { text: '> welcome to my portfolio!', delay: 2000 },
 ];
 
 const LAST_LINE_DELAY = 1200; 
