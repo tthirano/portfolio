@@ -190,7 +190,7 @@ export default function HomePage() {
         <canvas ref={canvasRef} className={styles.canvas} />
         <PageContent currentPage={1}>
           <div className={styles.content}>
-            <Heading fontSize="5xl" fontFamily="'Courier New', monospace" color="#E8DEF8" textAlign="center">
+            <Heading fontSize="4xl" fontFamily="'Courier New', monospace" color="#E8DEF8" textAlign="center">
               Hi, I'm Tyler Hirano
             </Heading>
             <Box mt={7}>
