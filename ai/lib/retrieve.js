@@ -1,5 +1,5 @@
-import { getMongoClient } from "@/ai/lib/mongodb";
-import { embedText } from "userEmbed.js";
+import { getMongoClient } from "./mongodb.js";
+import { embedText } from "./userEmbed.js";
 
 export async function retrieveRelevant(query) {
   const embedding = await embedText(query);
