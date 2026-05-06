@@ -1,16 +1,16 @@
-import clientPromise from "./mongodb.js";
-import { embedText } from "./userEmbed.js";
+import { getMongoClient } from "@/ai/lib/mongodb";
+import { embedText } from "userEmbed.js";
 
 export async function retrieveRelevant(query) {
   const embedding = await embedText(query);
 
-  const client = await clientPromise;
+  const client = await getMongoClient(); 
   const db = client.db("portfolioDB");
 
   const results = await db.collection("portfolio_chunks").aggregate([
     {
       $vectorSearch: {
-        index: "_id_",
+        index: "vector_index",
         path: "embedding",
         queryVector: embedding,
         numCandidates: 100,

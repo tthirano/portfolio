@@ -55,7 +55,7 @@ async function run() {
   // save locally
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
 
-  console.log("✅ Embeddings saved to embedded.json");
+  console.log("Embeddings saved to embedded.json");
 }
 
 run();
