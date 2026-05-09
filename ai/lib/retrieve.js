@@ -13,8 +13,8 @@ export async function retrieveRelevant(query) {
         index: "vector_index",
         path: "embedding",
         queryVector: embedding,
-        numCandidates: 100,
-        limit: 5
+        limit: 8,
+        numCandidates: 200
       }
     }
   ]).toArray();

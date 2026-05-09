@@ -98,6 +98,9 @@ export default function Page2() {
                         src={src}
                         alt={`Photo ${i + 1}`}
                         fill
+                        sizes="(max-width: 768px) 100px,
+                              (max-width: 1200px) 150px,
+                              230px"
                         style={{ objectFit: 'cover' }}
                       />
                     </Box>
@@ -120,6 +123,9 @@ export default function Page2() {
                   src="/me.jpg"
                   alt="Tyler Hirano"
                   fill
+                  sizes="(max-width: 768px) 200px,
+                        (max-width: 1200px) 300px,
+                        400px"
                   style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
                   priority
                 />
