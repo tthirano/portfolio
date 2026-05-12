@@ -75,15 +75,15 @@ export default function ChatPage() {
               fontSize="4xl"
               color="#E8DEF8"
             >
-              Chat With Me
+              Chat
             </Heading>
 
-            {/* Chat Box */}
+            {/*Chat Box*/}
             <Box
               bg="#1a1d24"
               borderRadius="lg"
               p={4}
-              h="500px"
+              h="475px"
               overflowY="auto"
               mb={4}
             >
@@ -108,16 +108,17 @@ export default function ChatPage() {
               </VStack>
             </Box>
 
-            {/* Input */}
+            {/*Input*/}
             <Flex gap={2}>
               <Input
                 placeholder="Ask about my projects, experience..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                bg="gray.800"
+                bg="#1a1d24"
                 border="none"
                 _focus={{ border: '1px solid #E8DEF8' }}
                 onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+                style={{ display: 'block', marginBottom: 6, color: 'white' }}
               />
               <Button
                 onClick={sendMessage}
