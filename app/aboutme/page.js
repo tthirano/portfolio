@@ -38,19 +38,19 @@ export default function Page2() {
             >
               <Box w={{ base: '100%', md: '50%' }}>
                 <Stack spacing={4}>
-                  <Text fontSize="lg" color="gray.200">
+                  <Text fontSize="15px" color="gray.200">
                     Hi, I'm <b>Tyler Hirano</b>, a Management Information Systems student
                     with a Computer Science minor at Santa Clara University. I like building
                     tools that make systems easier to use and workflows more efficient. Always 
                     looking to work on problems where technology can make a real difference
                   </Text>
-                  <Text fontSize="lg" color="gray.200">
+                  <Text fontSize="15px" color="gray.200">
                     I interned at Pacxa where I built a data validation app that cut manual
                     reconciliation time by 50%, worked on an AI pipeline for entity resolution,
                     and refactored a Power Apps talent management tool into a full Next.js web app.
                     I'm also currently building a website for Front Door Communities, a local nonprofit in San Jose.
                   </Text>
-                  <Text fontSize="lg" color="gray.200">
+                  <Text fontSize="15px" color="gray.200">
                     Outside of class and tech, you'll find me at the gym, with my epic dog, spearfishing,
                     trying new recipes, playing piano or drums, or watching football.
                   </Text>

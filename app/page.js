@@ -26,11 +26,15 @@ export default function HomePage() {
     const handleMouseMove = (e) => {
       mouseX = e.clientX / window.innerWidth;
       mouseY = e.clientY / window.innerHeight;
-      
+
+      if (Date.now() - lastMouseMove > 500) {
+        lastAngleX = currentAngleX;
+        lastAngleY = currentAngleY;
+        autoAngle = 0;
+      }
+
       lastAngleX = -(mouseY - 0.5) * Math.PI;
       lastAngleY = (mouseX - 0.5) * Math.PI * 2;
-      autoAngle = 0; 
-      
       lastMouseMove = Date.now();
     };
 

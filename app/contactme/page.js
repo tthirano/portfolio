@@ -3,7 +3,7 @@ import { Box, Heading } from '@chakra-ui/react';
 import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 import ContactForm from '../components/contactme';
-import styles from './page.module.css';
+import styles from '../page.module.css';
 
 export default function Page4() {
   return (
