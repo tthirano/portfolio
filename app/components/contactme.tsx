@@ -1,11 +1,10 @@
 'use client';
-
 import { Box, Button, Input, Textarea, VStack } from '@chakra-ui/react';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
-  const form = useRef<HTMLFormElement | null>(null);
+  const form = useRef(null);
   const [loading, setLoading] = useState(false);
   const [banner, setBanner] = useState<{ type: 'success' | 'error'; msg: string } | null>(null);
 
