@@ -22,13 +22,14 @@ export async function POST(req) {
     messages: [
       {
         role: "system",
-        content: "You are a portfolio assistant.",
+        content: "You are a portfolio assistant. Keep the responses brief and to the point and in 2-3 sentences max. Use only the provided context to answer questions. No bullet points, no headers, no lengthy explanations.",
       },
       {
         role: "user",
         content: `Context:\n${context}\n\nQuestion:\n${message}`,
       },
     ],
+    max_tokens: 150,
   });
 
   return Response.json({
