@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import Groq from "groq-sdk";
 import { retrieveRelevant } from "@/ai/lib/retrieve";
 
@@ -6,47 +8,30 @@ const groq = new Groq({
 });
 
 export async function POST(req) {
+  console.log("HF_TOKEN set:", !!process.env.HF_TOKEN);
+  console.log("GROQ_API_KEY set:", !!process.env.GROQ_API_KEY);
+  
   const { message } = await req.json();
 
   const docs = await retrieveRelevant(message);
+
   const context = docs.map(d => d.content).join("\n");
 
   const completion = await groq.chat.completions.create({
-    model: "llama-3.1-8b-instant", 
+    model: "llama-3.1-8b-instant",
     messages: [
-  {
-    role: "system",
-    content: `
-        You are Tyler Hirano’s personal portfolio assistant.
-
-        CRITICAL RULES:
-        - ONLY use the provided context.
-        - Do NOT guess or generalize.
-        - If the answer is not explicitly in the context, say:
-          "I don't have enough information in my portfolio to answer that."
-
-        - Be specific, factual, and concise.
-        - Prefer details, numbers, project names, and technologies if present.
-        `
-        },
-        {
-          role: "user",
-          content: `
-      Use the context below to answer the question.
-
-      Context:
-      ${context}
-
-      Question:
-      ${message}
-
-      Answer in 3–6 sentences max. Be specific.
-      `
-      }
-    ]
+      {
+        role: "system",
+        content: "You are a portfolio assistant.",
+      },
+      {
+        role: "user",
+        content: `Context:\n${context}\n\nQuestion:\n${message}`,
+      },
+    ],
   });
 
   return Response.json({
-    reply: completion.choices[0].message.content
+    reply: completion.choices[0].message.content,
   });
 }

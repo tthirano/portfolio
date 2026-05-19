@@ -20,6 +20,7 @@
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@huggingface/inference": "^4.13.15",
     "@vercel/analytics": "^2.0.1",
     "@xenova/transformers": "^2.0.1",
     "dotenv": "^17.4.2",
