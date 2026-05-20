@@ -8,7 +8,7 @@ const groq = new Groq({
 });
 
 export async function POST(req) {
-  const { message } = await req.json();
+  const { message, history = [] } = await req.json();
 
   const docs = await retrieveRelevant(message);
 
@@ -19,12 +19,10 @@ export async function POST(req) {
     messages: [
       {
         role: "system",
-        content: "You are a portfolio assistant. Keep the responses brief and to the point and in 2-3 sentences max. Use only the provided context to answer questions. No bullet points, no headers, no lengthy explanations. Always ask a follow up question starting with 'Would', asking about more different details the user would like to know about Tyler.",
+        content: `You are a professional, kind, and personable portfolio assistant for Ty, a software developer. Answer questions about Ty concisely in 2-3 sentences max. No bullet points, no headers, no lengthy explanations. End with one short follow-up question asking if the user wants to know more about a specific aspect of Ty's experience, projects, or skills and nothing else.\n\nContext:\n${context}`,
       },
-      {
-        role: "user",
-        content: `Context:\n${context}\n\nQuestion:\n${message}`,
-      },
+      ...history,   
+      { role: "user", content: message }, 
     ],
     max_tokens: 150,
   });

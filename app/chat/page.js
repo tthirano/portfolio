@@ -19,7 +19,7 @@ export default function ChatPage() {
     {
       role: 'assistant',
       content:
-        "Hi, I'm Tyler's AI assistant. Ask me anything about my experience, projects, or skills.",
+        "Hi, I'm Tyler's AI assistant. Ask me anything about his experience, projects, or skills.",
     },
   ]);
   const [input, setInput] = useState('');
@@ -43,7 +43,7 @@ export default function ChatPage() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: input, history: messages}),
       });
 
       const data = await res.json();
@@ -133,10 +133,10 @@ export default function ChatPage() {
             </Flex>
           </Box>
         </PageContent>
-      </div>
-
-      <div className={styles.pagination}>
-        <Pagination currentPath="/chat" />
+        
+        <div className={styles.pagination}>
+          <Pagination currentPath="/chat" />
+        </div>
       </div>
     </>
   );
