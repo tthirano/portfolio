@@ -1,5 +1,4 @@
 'use client';
-
 import { useState, useRef, useEffect } from 'react';
 import {
   Box,
@@ -94,6 +93,8 @@ export default function ChatPage() {
                     justify={msg.role === 'user' ? 'flex-end' : 'flex-start'}
                   >
                     <Box
+                      color="white"
+                      fontSize="sm"
                       maxW="70%"
                       px={4}
                       py={3}
@@ -123,9 +124,9 @@ export default function ChatPage() {
               <Button
                 onClick={sendMessage}
                 isLoading={loading}
-                bg="#E8DEF8"
-                color="black"
-                _hover={{ opacity: 0.9 }}
+                bg="#555466"
+                color="white"
+                _hover={{ bg: '#6A5B7C' }}
               >
                 Send
               </Button>

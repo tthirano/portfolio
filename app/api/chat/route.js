@@ -8,9 +8,6 @@ const groq = new Groq({
 });
 
 export async function POST(req) {
-  console.log("HF_TOKEN set:", !!process.env.HF_TOKEN);
-  console.log("GROQ_API_KEY set:", !!process.env.GROQ_API_KEY);
-  
   const { message } = await req.json();
 
   const docs = await retrieveRelevant(message);
@@ -22,7 +19,7 @@ export async function POST(req) {
     messages: [
       {
         role: "system",
-        content: "You are a portfolio assistant. Keep the responses brief and to the point and in 2-3 sentences max. Use only the provided context to answer questions. No bullet points, no headers, no lengthy explanations.",
+        content: "You are a portfolio assistant. Keep the responses brief and to the point and in 2-3 sentences max. Use only the provided context to answer questions. No bullet points, no headers, no lengthy explanations. Always ask a follow up question starting with 'Would', asking about more different details the user would like to know about Tyler.",
       },
       {
         role: "user",

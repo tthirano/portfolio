@@ -12,12 +12,9 @@ export async function embedText(text, retries = 3) {
       }
     );
 
-    console.log("HF status:", res.status);
     const raw = await res.text();
-    console.log("HF raw:", raw.slice(0, 300));
 
     const url = "https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2";
-    console.log("Fetching:", url);
 
     const data = JSON.parse(raw);
 
