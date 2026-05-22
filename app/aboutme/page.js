@@ -41,11 +41,11 @@ export default function Page2() {
                   <Text fontSize="15px" color="gray.200">
                     Hi, I'm <b>Tyler Hirano</b>, a Management Information Systems student
                     with a Computer Science minor at Santa Clara University. I like building
-                    tools that make systems easier to use and workflows more efficient. Always 
-                    looking to work on problems where technology can make a real difference
+                    tools that make systems and workflows easier to use and more efficient. Always 
+                    looking to work on problems where technology can make a real difference!
                   </Text>
                   <Text fontSize="15px" color="gray.200">
-                    I interned at Pacxa where I built a data validation app that cut manual
+                    This past summer, I interned at Pacxa where I built a data validation app that cut manual
                     reconciliation time by 50%, worked on an AI pipeline for entity resolution,
                     and refactored a Power Apps talent management tool into a full Next.js web app.
                     I'm also currently building a website for Front Door Communities, a local nonprofit in San Jose.
