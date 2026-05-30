@@ -124,7 +124,7 @@ export default function HomePage() {
 
      if (isIdle) {
         targetAngleX = currentAngleX;
-        targetAngleY += 0.002;  
+        targetAngleY += 0.01;  
       }
 
     currentAngleX += (targetAngleX - currentAngleX) * 0.05;
