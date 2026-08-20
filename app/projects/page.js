@@ -24,7 +24,12 @@ export default function Page3() {
         webm: '/videos2/TMADemoFinal.vp9.webm',
       },
     },
-    { title: 'Coming Soon', description: '', video: null },
+    { title: 'Huakaʻi Workforce Portal', description: 'Developed a workforce development web application for the U.S. Department of Education’s Connecting Talent to Opportunity (CTO) Challenge. The platform serves as a centralized talent marketplace connecting job seekers with employers, training programs, certifications, mentorship, and career opportunities.', 
+      video: {
+        mp4: '/videos2/huakaidemo.h264.mp4',
+        webm: '/videos2/huakaidemo.vp9.webm',
+      },
+    },
   ];
 
   return (
