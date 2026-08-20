@@ -17,24 +17,32 @@ export default function HomePage() {
     let mouseX = 0.5;
     let mouseY = 0.5;
     let autoAngle = 0;
-    let lastMouseMove = Date.now(); 
-    let lastAngleX = 0;
-    let lastAngleY = 0;
+    let lastMouseMove = Date.now();
     let currentAngleX = 0.5;
     let currentAngleY = 0.5;
+    let targetAngleX = 0.5;  
+    let targetAngleY = 0.5;
 
     const handleMouseMove = (e) => {
-      mouseX = e.clientX / window.innerWidth;
-      mouseY = e.clientY / window.innerHeight;
+      const newMouseX = e.clientX / window.innerWidth;
+      const newMouseY = e.clientY / window.innerHeight;
+
+      const isIdle = Date.now() - lastMouseMove > 500;
 
       if (Date.now() - lastMouseMove > 500) {
-        lastAngleX = currentAngleX;
-        lastAngleY = currentAngleY;
-        autoAngle = 0;
+        mouseX = newMouseX;
+        mouseY = newMouseY;
+        targetAngleX = currentAngleX;
+        targetAngleY = currentAngleY;
       }
+      
+      const dx = newMouseX - mouseX;
+      const dy = newMouseY - mouseY;
+      targetAngleY += dx * Math.PI * 2;
+      targetAngleX -= dy * Math.PI;
 
-      lastAngleX = -(mouseY - 0.5) * Math.PI;
-      lastAngleY = (mouseX - 0.5) * Math.PI * 2;
+      mouseX = newMouseX;
+      mouseY = newMouseY;
       lastMouseMove = Date.now();
     };
 
@@ -114,15 +122,13 @@ export default function HomePage() {
       const idleMs = Date.now() - lastMouseMove;
       const isIdle = idleMs > 500; 
 
-      if (isIdle) {
-        autoAngle += 0.005;
+     if (isIdle) {
+        targetAngleX = currentAngleX;
+        targetAngleY += 0.01;  
       }
 
-      const targetAngleY = isIdle ? lastAngleY + autoAngle : (mouseX - 0.5) * Math.PI * 2;
-      const targetAngleX = isIdle ? lastAngleX + autoAngle : -(mouseY - 0.5) * Math.PI;
-
-      currentAngleX += (targetAngleX - currentAngleX) * 0.05;
-      currentAngleY += (targetAngleY - currentAngleY) * 0.05;
+    currentAngleX += (targetAngleX - currentAngleX) * 0.05;
+    currentAngleY += (targetAngleY - currentAngleY) * 0.05;
 
       const angleX = currentAngleX;
       const angleY = currentAngleY;
