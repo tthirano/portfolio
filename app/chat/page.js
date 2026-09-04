@@ -48,14 +48,21 @@ export default function ChatPage() {
 
       const data = await res.json();
 
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong.');
+      }
+
       setMessages((prev) => [
         ...prev,
         { role: 'assistant', content: data.reply },
       ]);
-    } catch {
+    } catch (error) {
       setMessages((prev) => [
         ...prev,
-        { role: 'assistant', content: 'Something went wrong.' },
+        {
+          role: 'assistant',
+          content: error instanceof Error ? error.message : 'Something went wrong.',
+        },
       ]);
     }
 
