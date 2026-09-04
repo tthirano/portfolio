@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import {
   Box,
   Flex,
@@ -14,8 +13,6 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import styles from './page.module.css';
 
 export default function Page2() {
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  
   return (
     <>
       <div className={styles.container}>
@@ -91,10 +88,8 @@ export default function Page2() {
                       borderRadius="md"
                       overflow="hidden"
                       border="2px solid #E8DEF8"
-                      cursor="pointer"
                       transition="transform 0.2s, opacity 0.2s"
                       _hover={{ transform: 'scale(1.08)', opacity: 0.85 }}
-                      onClick={() => setSelectedPhoto(src)}
                     >
                       <NextImage
                         src={src}
@@ -130,19 +125,6 @@ export default function Page2() {
           </Box>
         </PageContent>
       </div>
-
-      {selectedPhoto && (
-        <div className={styles.lightbox} onClick={() => setSelectedPhoto(null)}>
-          <div className={styles.lightboxImage}>
-            <NextImage
-              src={selectedPhoto}
-              alt="Enlarged photo"
-              fill
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
-        </div>
-      )}
 
       <div className={styles.pagination}>
         <Pagination currentPath="/aboutme" />
