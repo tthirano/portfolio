@@ -38,21 +38,23 @@ export default function Page2() {
             >
               <Box w={{ base: '100%', md: '50%' }}>
                 <Stack spacing={4}>
-                  <Text fontSize="15px" color="gray.200">
-                    Hi, I'm <b>Tyler Hirano</b>, a Management Information Systems student
-                    with a Computer Science minor at Santa Clara University. I like building
-                    tools that make systems and workflows easier to use and more efficient. Always 
-                    looking to work on problems where technology can make a real difference!
+                  <Text fontSize="lg" color="gray.200"> 
+                    I'm a Management Information Systems student with a Computer Science minor at 
+                    Santa Clara University, with an interest in building technology that solves 
+                    real-world problems. I enjoy the combination of problem-solving, creativity, 
+                    and continuous learning that comes with developing software and finding better 
+                    ways to make systems and workflows more efficient. 
                   </Text>
-                  <Text fontSize="15px" color="gray.200">
-                    This past summer, I interned at Pacxa where I built a data validation app that cut manual
-                    reconciliation time by 50%, worked on an AI pipeline for entity resolution,
-                    and refactored a Power Apps talent management tool into a full Next.js web app.
-                    I'm also currently building a website for Front Door Communities, a local nonprofit in San Jose.
+                  <Text fontSize="lg" color="gray.200"> 
+                    Through my internships at Pacxa, I've had the opportunity to work on projects 
+                    ranging from AI-powered data validation and entity resolution to a workforce development 
+                    platform for the U.S. Department of Education's Connecting Talent to Opportunity Challenge. 
+                    I'm interested in the space where technology and business meet, and I'm always looking for 
+                    opportunities to learn, build, and solve meaningful problems. 
                   </Text>
-                  <Text fontSize="15px" color="gray.200">
-                    Outside of class and tech, you'll find me at the gym, with my epic dog, spearfishing,
-                    trying new recipes, playing piano or drums, or watching football.
+                  <Text fontSize="lg" color="gray.200">
+                    Outside of class and tech, you'll find me at the gym, with my dog, spearfishing,
+                    trying new recipes, or watching football.
                   </Text>
                 </Stack>
                 <Flex gap={4} mt={4} mb={4}>
@@ -98,9 +100,6 @@ export default function Page2() {
                         src={src}
                         alt={`Photo ${i + 1}`}
                         fill
-                        sizes="(max-width: 768px) 100px,
-                              (max-width: 1200px) 150px,
-                              230px"
                         style={{ objectFit: 'cover' }}
                       />
                     </Box>
@@ -123,9 +122,6 @@ export default function Page2() {
                   src="/me.jpg"
                   alt="Tyler Hirano"
                   fill
-                  sizes="(max-width: 768px) 200px,
-                        (max-width: 1200px) 300px,
-                        400px"
                   style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
                   priority
                 />
