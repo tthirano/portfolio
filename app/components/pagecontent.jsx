@@ -38,7 +38,7 @@ export default function PageContent({ children, transitionRefs = [] }) {
 
       elements.forEach((element) => {
         element.style.willChange = 'transform, opacity';
-        element.style.transition = 'transform 900ms cubic-bezier(0.22, 1, 0.36, 1), opacity 900ms ease-out';
+        element.style.transition = 'transform 1200ms cubic-bezier(0.22, 1, 0.36, 1), opacity 1200ms ease-out';
         element.style.transform = cubeTransform(0);
         element.style.opacity = '1';
       });

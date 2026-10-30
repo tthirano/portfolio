@@ -1,6 +1,5 @@
 'use client';
 import { Box, Flex, Heading, SimpleGrid, Text, Stack } from '@chakra-ui/react';
-import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 import styles from './page.module.css';
 
@@ -104,9 +103,6 @@ export default function Page3() {
         </PageContent>
       </div>
 
-      <div className={styles.pagination}>
-        <Pagination currentPath="/projects" />
-      </div>
     </>
   );
 }

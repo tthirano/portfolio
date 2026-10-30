@@ -2,7 +2,6 @@
 import { useEffect, useRef } from 'react';
 import { Box, Heading } from '@chakra-ui/react';
 import DownloadResume from './components/download';
-import Pagination from './components/pagination';
 import PageContent from './components/pagecontent';
 import styles from './page.module.css';
 
@@ -208,9 +207,6 @@ export default function HomePage() {
             </Box>
           </div>
         </PageContent>
-        <div className={styles.pagination}>
-          <Pagination currentPath="/" />
-        </div>
       </div>
     </>
   );  

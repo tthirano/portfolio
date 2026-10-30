@@ -14,7 +14,7 @@ const icons = [
   { path: '/chat', icon: BotMessageSquare },
 ];
 
-export default function Pagination({ currentPath }) {
+export default function Pagination() {
   const router = useRouter();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function Pagination({ currentPath }) {
   return (
     <HStack spacing={4} mb={4} justify="center">
       {icons.map(({ path, icon: Icon }) => (
-        <PageButton key={path} path={path} isSelected={currentPath === path}>
+        <PageButton key={path} path={path}>
           <Icon size={20} />
         </PageButton>
       ))}

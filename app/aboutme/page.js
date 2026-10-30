@@ -7,7 +7,6 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import NextImage from 'next/image';
-import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import styles from './page.module.css';
@@ -126,9 +125,6 @@ export default function Page2() {
         </PageContent>
       </div>
 
-      <div className={styles.pagination}>
-        <Pagination currentPath="/aboutme" />
-      </div>
     </>
   );
 }

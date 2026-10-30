@@ -25,7 +25,7 @@
 
 .forward {
   transform-origin: center center;
-  animation: rotateOutForward 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: rotateOutForward 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .forward::after {
@@ -34,7 +34,7 @@
 
 .backward {
   transform-origin: center center;
-  animation: rotateOutBackward 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: rotateOutBackward 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .backward::after {

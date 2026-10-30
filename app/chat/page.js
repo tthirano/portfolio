@@ -10,7 +10,6 @@ import {
   Heading,
 } from '@chakra-ui/react';
 
-import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 import styles from './page.module.css';
 
@@ -141,9 +140,6 @@ export default function ChatPage() {
           </Box>
         </PageContent>
         
-        <div className={styles.pagination}>
-          <Pagination currentPath="/chat" />
-        </div>
       </div>
     </>
   );

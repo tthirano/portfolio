@@ -1,6 +1,5 @@
 'use client';
 import { Box, Heading } from '@chakra-ui/react';
-import Pagination from '../components/pagination';
 import PageContent from '../components/pagecontent';
 import ContactForm from '../components/contactme';
 import styles from '../page.module.css';
@@ -19,9 +18,6 @@ export default function Page4() {
         </PageContent>
       </div>
 
-      <div className={styles.pagination}>
-        <Pagination currentPath="/contactme" />
-      </div>
     </>
   );
 }

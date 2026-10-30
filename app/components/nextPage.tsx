@@ -2,7 +2,6 @@
 import { Button } from '@chakra-ui/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import styles from './pagecontent.module.css';
 
 const pageOrder = ['/', '/aboutme', '/projects', '/contactme', '/chat'];
@@ -36,18 +35,12 @@ function showOutgoingFace(movingForward: boolean) {
 
   document.body.appendChild(outgoingFace);
   outgoingFace.addEventListener('animationend', () => outgoingFace.remove(), { once: true });
-  window.setTimeout(() => outgoingFace.remove(), 1000);
+  window.setTimeout(() => outgoingFace.remove(), 1300);
 }
 
 export default function PageButton({ path, children }) {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const isSelected = mounted && pathname === path;
+  const isSelected = pathname === path;
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (
@@ -79,7 +72,7 @@ export default function PageButton({ path, children }) {
         bg={isSelected ? '#c6bdd4ff' : '#555466'}
         color="white"
         _hover={{ bg: '#6A5B7C' }}
-        opacity={mounted ? 1 : 0}
+        opacity={1}
         transition="opacity 0.4s"
       >
         {children}
