@@ -8,7 +8,7 @@ import styles from '../page.module.css';
 export default function Page4() {
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} data-page-transition-root>
         <PageContent pagenumber={4}>
           <Box px={8} py={4}>
             <Heading as="h1" mb={6} fontFamily="var(--font-dm-sans)" fontSize="4xl" color="#E8DEF8">

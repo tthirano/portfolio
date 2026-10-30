@@ -15,7 +15,7 @@ import styles from './page.module.css';
 export default function Page2() {
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} data-page-transition-root>
         <PageContent currentPage={2}>
           <Box flex="1" pl={6} pr={8} py={4}>
             <Heading

@@ -196,9 +196,9 @@ export default function HomePage() {
   }, []);
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} data-page-transition-root>
         <canvas ref={canvasRef} className={styles.canvas} />
-        <PageContent currentPage={1}>
+        <PageContent transitionRefs={[canvasRef]}>
           <div className={styles.content}>
             <Heading fontSize="4xl" fontFamily="'Courier New', monospace" color="#E8DEF8" textAlign="center">
               Hi, I'm Tyler Hirano

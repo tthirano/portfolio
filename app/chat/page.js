@@ -71,7 +71,7 @@ export default function ChatPage() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} data-page-transition-root>
         <PageContent pagenumber={3}>
           <Box px={8} py={4}>
             <Heading

@@ -34,7 +34,7 @@ export default function Page3() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} data-page-transition-root>
         <PageContent currentPage={3}>
           <Box flex="1" pl={6} pr={8} py={4}>
             <Heading
